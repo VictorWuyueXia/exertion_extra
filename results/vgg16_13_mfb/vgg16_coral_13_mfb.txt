@@ -1,0 +1,179 @@
+Train set: 3275 files
+Val set: 360 files
+Test set: 94 files
+Validating file existence...
+Train - All files exist
+Val - All files exist
+Test - All files exist
+Using pre-defined splits:
+  Train: 3275 sessions
+  Val: 360 sessions
+  Test: 94 sessions
+
+=== Running with params: {'input_channels': 1, 'lr': 0.0001}, feature_type: mfb ===
+
+====== Running Experiment ======
+Device: cuda
+
+Epoch 1/50
+Train Loss: 0.5320 | Val Loss: 0.4948
+
+Epoch 2/50
+Train Loss: 0.4918 | Val Loss: 0.5103
+
+Epoch 3/50
+Train Loss: 0.4950 | Val Loss: 0.4952
+
+Epoch 4/50
+Train Loss: 0.4921 | Val Loss: 0.4924
+
+Epoch 5/50
+Train Loss: 0.4946 | Val Loss: 0.4919
+
+Epoch 6/50
+Train Loss: 0.4892 | Val Loss: 0.5028
+
+Epoch 7/50
+Train Loss: 0.4843 | Val Loss: 0.4910
+
+Epoch 8/50
+Train Loss: 0.4817 | Val Loss: 0.4876
+
+Epoch 9/50
+Train Loss: 0.4749 | Val Loss: 0.4769
+
+Epoch 10/50
+Train Loss: 0.4585 | Val Loss: 0.4705
+
+Epoch 11/50
+Train Loss: 0.4550 | Val Loss: 0.4678
+
+Epoch 12/50
+Train Loss: 0.4396 | Val Loss: 0.4668
+
+Epoch 13/50
+Train Loss: 0.4354 | Val Loss: 0.4661
+
+Epoch 14/50
+Train Loss: 0.4200 | Val Loss: 0.4848
+
+Epoch 15/50
+Train Loss: 0.4091 | Val Loss: 0.4771
+
+Epoch 16/50
+Train Loss: 0.3931 | Val Loss: 0.4729
+
+Epoch 17/50
+Train Loss: 0.3842 | Val Loss: 0.4744
+
+Epoch 18/50
+Train Loss: 0.3694 | Val Loss: 0.4994
+Early stopping triggered.
+Model on: cuda:0
+[Val seg-level] Class: s | tIoU: 0.108 | Precision: 0.108 | Recall: 0.108
+[Val seg-level] Class: b | tIoU: 0.142 | Precision: 0.142 | Recall: 0.142
+[Val seg-level] Class: bs | tIoU: 0.069 | Precision: 0.069 | Recall: 0.069
+[RAW] Fold 1 | Val Acc: 0.342 | AUC: 0.640
+[SMOOTH] Fold 1 | Val Acc: 0.342 | AUC: 0.640
+[Test seg-level] Class: s | tIoU: 0.149 | Precision: 0.149 | Recall: 0.149
+[Test seg-level] Class: b | tIoU: 0.170 | Precision: 0.170 | Recall: 0.170
+[Test seg-level] Class: bs | tIoU: 0.032 | Precision: 0.032 | Recall: 0.032
+[RAW] Fold 1 | Test Acc: 0.436 | AUC: 0.696
+[SMOOTH] Fold 1 | Test Acc: 0.436 | AUC: 0.696
+
+[Validation Performance]
+
+Class Support (after padding removed):
+  0 (0): 37 samples
+  1 (1): 106 samples
+  2 (2): 126 samples
+  3 (3): 90 samples
+  4 (4): 1 samples
+
+========== classification_report ==========
+              precision    recall  f1-score   support
+
+           0      0.132     0.189     0.156        37
+           1      0.481     0.368     0.417       106
+           2      0.447     0.405     0.425       126
+           3      0.463     0.278     0.347        90
+           4      0.017     1.000     0.034         1
+
+    accuracy                          0.342       360
+   macro avg      0.308     0.448     0.276       360
+weighted avg      0.428     0.342     0.374       360
+
+False Break Rate on Val: 0.8108
+[Val seg-level] Class: s | tIoU: 0.108 | Precision: 0.108 | Recall: 0.108
+[Val seg-level] Class: b | tIoU: 0.142 | Precision: 0.142 | Recall: 0.142
+[Val seg-level] Class: bs | tIoU: 0.069 | Precision: 0.069 | Recall: 0.069
+
+[Test Performance]
+
+Class Support (after padding removed):
+  0 (0): 10 samples
+  1 (1): 36 samples
+  2 (2): 29 samples
+  3 (3): 17 samples
+  4 (4): 2 samples
+
+========== classification_report ==========
+              precision    recall  f1-score   support
+
+           0      0.273     0.600     0.375        10
+           1      0.500     0.389     0.438        36
+           2      0.552     0.552     0.552        29
+           3      0.333     0.176     0.231        17
+           4      0.333     1.000     0.500         2
+
+    accuracy                          0.436        94
+   macro avg      0.398     0.543     0.419        94
+weighted avg      0.458     0.436     0.430        94
+
+False Break Rate on Test: 0.4000
+[Test seg-level] Class: s | tIoU: 0.149 | Precision: 0.149 | Recall: 0.149
+[Test seg-level] Class: b | tIoU: 0.170 | Precision: 0.170 | Recall: 0.170
+[Test seg-level] Class: bs | tIoU: 0.032 | Precision: 0.032 | Recall: 0.032
+
+Per-Class Support (aggregated across all folds):
+  o (0): 10 samples
+  b (1): 36 samples
+  s (2): 29 samples
+  bs (3): 17 samples
+  Class 4 (4): 2 samples
+
+========== Aggregated Metrics (CrossValidation) ==========
+Average Accuracy     : 0.4362
+Average AUC          : 0.6964
+Macro F1 Score       : 0.4190
+Weighted F1 Score    : 0.4300
+Macro Precision      : 0.3982
+Macro Recall         : 0.5434
+
+Aggregated Classification Report:
+              precision    recall  f1-score   support
+
+           o      0.273     0.600     0.375        10
+           b      0.500     0.389     0.438        36
+           s      0.552     0.552     0.552        29
+          bs      0.333     0.176     0.231        17
+
+   micro avg      0.443     0.424     0.433        92
+   macro avg      0.414     0.429     0.399        92
+weighted avg      0.461     0.424     0.429        92
+
+====================================================
+
+=== Aggregated Metrics ===
+avg_accuracy: 0.43617021276595747
+avg_auc: 0.6963827775442556
+macro_f1: 0.4189986737400531
+weighted_f1: 0.43003273322422253
+macro_precision: 0.39822361546499474
+macro_recall: 0.5434167230110435
+per_class_report: {'o': {'precision': 0.2727272727272727, 'recall': 0.6, 'f1-score': 0.375, 'support': 10.0}, 'b': {'precision': 0.5, 'recall': 0.3888888888888889, 'f1-score': 0.4375, 'support': 36.0}, 's': {'precision': 0.5517241379310345, 'recall': 0.5517241379310345, 'f1-score': 0.5517241379310345, 'support': 29.0}, 'bs': {'precision': 0.3333333333333333, 'recall': 0.17647058823529413, 'f1-score': 0.23076923076923078, 'support': 17.0}, 'micro avg': {'precision': 0.4431818181818182, 'recall': 0.42391304347826086, 'f1-score': 0.43333333333333335, 'support': 92.0}, 'macro avg': {'precision': 0.4144461859979101, 'recall': 0.4292709037638044, 'f1-score': 0.39874834217506633, 'support': 92.0}, 'weighted avg': {'precision': 0.4608036890645586, 'recall': 0.42391304347826086, 'f1-score': 0.4285117056856187, 'support': 92.0}}
+confusion_matrix_aggregated: [[ 6  2  2  0  0]
+ [13 14  6  3  0]
+ [ 2  7 16  3  1]
+ [ 1  5  5  3  3]
+ [ 0  0  0  0  2]]

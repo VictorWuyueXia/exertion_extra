@@ -1,0 +1,9 @@
+Loading metadata from all splits...
+Traceback (most recent call last):
+  File "/mnt/c/Users/Victor/Documents/NIcE_X/ExtraExperiments/cardio_pause/src/script_cls_new_split.py", line 271, in <module>
+    run_experiment_with_config(config)
+  File "/mnt/c/Users/Victor/Documents/NIcE_X/ExtraExperiments/cardio_pause/src/script_cls_new_split.py", line 118, in run_experiment_with_config
+    train_meta_df = get_session_metadata(train_label_dir, train_audio_dir)
+  File "/mnt/c/Users/Victor/Documents/NIcE_X/ExtraExperiments/cardio_pause/src/data/loader_new_split.py", line 17, in get_session_metadata
+    for fname in sorted(os.listdir(label_dir)):
+FileNotFoundError: [Errno 2] No such file or directory: './new_split_train/segmented_labels'

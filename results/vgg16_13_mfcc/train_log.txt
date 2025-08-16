@@ -1,0 +1,139 @@
+# Experiment: new_split_cls_vgg16_mfcc_2025-08-15
+
+===== training_log.txt =====
+
+=== Experiment: new_split_cls_vgg16_mfcc_2025-08-15 ===
+
+=== Experiment: new_split_cls_vgg16_mfcc_2025-08-15 ===
+
+=== Experiment: new_split_cls_vgg16_mfcc_2025-08-15 ===
+
+=== Experiment: new_split_cls_vgg16_mfcc_2025-08-15 ===
+Experiment done
+
+=== Experiment: new_split_cls_vgg16_mfcc_2025-08-15 ===
+Experiment done
+
+
+===== terminal_log.txt =====
+Loading metadata from all splits...
+/mnt/c/Users/Victor/Documents/NIcE_X/ExtraExperiments/cardio_pause/src/data/loader_new_split.py:27: UserWarning: torchaudio._backend.utils.info has been deprecated. This deprecation is part of a large refactoring effort to transition TorchAudio into a maintenance phase. The decoding and encoding capabilities of PyTorch for both audio and video are being consolidated into TorchCodec. Please see https://github.com/pytorch/audio/issues/3902 for more information. It will be removed from the 2.9 release. 
+  duration = torchaudio.info(wav_path).num_frames / torchaudio.info(wav_path).sample_rate
+/home/victor/miniconda3/envs/exertion_lvl/lib/python3.9/site-packages/torchaudio/_backend/ffmpeg.py:20: UserWarning: torio.io._streaming_media_decoder.StreamingMediaDecoder has been deprecated. This deprecation is part of a large refactoring effort to transition TorchAudio into a maintenance phase. The decoding and encoding capabilities of PyTorch for both audio and video are being consolidated into TorchCodec. Please see https://github.com/pytorch/audio/issues/3902 for more information. It will be removed from the 2.9 release. 
+  s = torchaudio.io.StreamReader(src, format, None, buffer_size)
+/home/victor/miniconda3/envs/exertion_lvl/lib/python3.9/site-packages/torchaudio/_backend/ffmpeg.py:27: UserWarning: torchaudio._backend.common.AudioMetaData has been deprecated. This deprecation is part of a large refactoring effort to transition TorchAudio into a maintenance phase. The decoding and encoding capabilities of PyTorch for both audio and video are being consolidated into TorchCodec. Please see https://github.com/pytorch/audio/issues/3902 for more information. It will be removed from the 2.9 release. 
+  return AudioMetaData(
+Train set: 3275 files
+Val set: 360 files
+Test set: 94 files
+Validating file existence...
+Train - All files exist
+Val - All files exist
+Test - All files exist
+Using pre-defined splits:
+  Train: 3275 sessions
+  Val: 360 sessions
+  Test: 94 sessions
+
+=== Running with params: {'input_channels': 1, 'lr': 0.0001}, feature_type: mfcc ===
+
+====== Running Experiment ======
+Device: cuda
+
+Epoch 1/50
+Train Loss: 0.5147 | Val Loss: 0.4973
+
+Epoch 2/50
+Train Loss: 0.4954 | Val Loss: 0.5242
+
+Epoch 3/50
+Train Loss: 0.4941 | Val Loss: 0.4923
+
+Epoch 4/50
+Train Loss: 0.4898 | Val Loss: 0.4914
+
+Epoch 5/50
+Train Loss: 0.4906 | Val Loss: 0.4990
+
+Epoch 6/50
+Train Loss: 0.4891 | Val Loss: 0.4985
+
+Epoch 7/50
+Train Loss: 0.4838 | Val Loss: 0.4887
+
+Epoch 8/50
+Train Loss: 0.4813 | Val Loss: 0.4876
+
+Epoch 9/50
+Train Loss: 0.4815 | Val Loss: 0.4821
+
+Epoch 10/50
+Train Loss: 0.4679 | Val Loss: 0.4849
+
+Epoch 11/50
+Train Loss: 0.4622 | Val Loss: 0.4823
+
+Epoch 12/50
+Train Loss: 0.4453 | Val Loss: 0.6044
+
+Epoch 13/50
+Train Loss: 0.4633 | Val Loss: 0.4828
+
+Epoch 14/50
+Train Loss: 0.4395 | Val Loss: 0.4956
+Early stopping triggered.
+Model on: cuda:0
+[RAW] Fold 1 | Val Acc: 0.350
+[RAW] Fold 1 | Test Acc: 0.468
+
+[Validation Performance]
+
+Accuracy: 0.3500
+
+[Test Performance]
+
+Accuracy: 0.4681
+
+Per-Class Support (aggregated across all folds):
+  o (0): 10 samples
+  b (1): 36 samples
+  s (2): 29 samples
+  bs (3): 17 samples
+  Class 4 (4): 2 samples
+
+========== Aggregated Metrics (CrossValidation) ==========
+Average Accuracy     : 0.4681
+Macro F1 Score       : 0.3448
+Weighted F1 Score    : 0.4618
+Macro Precision      : 0.4238
+Macro Recall         : 0.3225
+
+Aggregated Classification Report:
+              precision    recall  f1-score   support
+
+           o      0.750     0.300     0.429        10
+           b      0.565     0.722     0.634        36
+           s      0.429     0.414     0.421        29
+          bs      0.375     0.176     0.240        17
+
+   micro avg      0.512     0.478     0.494        92
+   macro avg      0.530     0.403     0.431        92
+weighted avg      0.507     0.478     0.472        92
+
+====================================================
+
+=== Aggregated Metrics ===
+avg_accuracy: 0.46808510638297873
+avg_auc: None
+macro_f1: 0.3447540803227581
+weighted_f1: 0.4617607329168796
+macro_precision: 0.4237577639751553
+macro_recall: 0.3224971827811584
+per_class_report: {'o': {'precision': 0.75, 'recall': 0.3, 'f1-score': 0.42857142857142855, 'support': 10.0}, 'b': {'precision': 0.5652173913043478, 'recall': 0.7222222222222222, 'f1-score': 0.6341463414634146, 'support': 36.0}, 's': {'precision': 0.42857142857142855, 'recall': 0.41379310344827586, 'f1-score': 0.42105263157894735, 'support': 29.0}, 'bs': {'precision': 0.375, 'recall': 0.17647058823529413, 'f1-score': 0.24, 'support': 17.0}, 'micro avg': {'precision': 0.5116279069767442, 'recall': 0.4782608695652174, 'f1-score': 0.4943820224719101, 'support': 92.0}, 'macro avg': {'precision': 0.5296972049689441, 'recall': 0.403121478476448, 'f1-score': 0.4309426004034476, 'support': 92.0}, 'weighted avg': {'precision': 0.5070804077774776, 'recall': 0.4782608695652174, 'f1-score': 0.47179900971942046, 'support': 92.0}}
+confusion_matrix_aggregated: [[ 3  6  1  0  0]
+ [ 0 26 10  0  0]
+ [ 1 10 12  5  1]
+ [ 0  4  3  3  7]
+ [ 0  0  2  0  0]]
+
+

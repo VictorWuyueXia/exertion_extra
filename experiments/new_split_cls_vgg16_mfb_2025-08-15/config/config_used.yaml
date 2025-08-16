@@ -1,0 +1,108 @@
+alexnet_param_grid:
+- input_channels: 1
+  lr: 0.0001
+- input_channels: 1
+  lr: 0.0005
+experiment:
+  input_features:
+  - mfb
+  model: vgg16
+  param_index: 0
+  selected_wav2vec2_layers:
+  - 4
+grunet_param_grid:
+- attention_dim: 128
+  hidden_dim: 128
+  lr: 0.0001
+  num_layers: 2
+  use_attention: false
+- attention_dim: 128
+  hidden_dim: 256
+  lr: 0.0001
+  num_layers: 2
+  use_attention: false
+- attention_dim: 128
+  hidden_dim: 512
+  lr: 0.0001
+  num_layers: 3
+  use_attention: false
+- attention_dim: 256
+  hidden_dim: 512
+  lr: 0.0001
+  num_layers: 4
+  use_attention: false
+lstm_param_grid:
+- attention_dim: 128
+  hidden_dim: 128
+  lr: 0.0001
+  num_layers: 2
+  use_attention: false
+- attention_dim: 128
+  hidden_dim: 128
+  lr: 0.0001
+  num_layers: 2
+  use_attention: false
+- attention_dim: 128
+  hidden_dim: 128
+  lr: 0.0001
+  num_layers: 2
+  use_attention: false
+- attention_dim: 128
+  hidden_dim: 128
+  lr: 0.0001
+  num_layers: 2
+  use_attention: false
+mlp_param_grid:
+- hidden_dim: 128
+  lr: 0.0001
+  num_layers: 2
+paths:
+  base_dir: .
+tcnnlstm_param_grid:
+- bias_conv: true
+  bidirectional: true
+  dilation_conv: 1
+  groups_conv: 1
+  hidden_dim: 128
+  kernel_size_conv: 3
+  lr: 0.0001
+  num_layers: 2
+  padding_conv: 1
+  stride_conv: 1
+- bias_conv: true
+  bidirectional: false
+  dilation_conv: 1
+  groups_conv: 1
+  hidden_dim: 128
+  kernel_size_conv: 3
+  lr: 0.001
+  num_layers: 2
+  padding_conv: 1
+  stride_conv: 1
+- bias_conv: true
+  bidirectional: false
+  dilation_conv: 1
+  groups_conv: 1
+  hidden_dim: 128
+  kernel_size_conv: 5
+  lr: 0.0005
+  num_layers: 2
+  padding_conv: 2
+  stride_conv: 1
+training:
+  batch_size: 64
+  early_stopping: true
+  epochs: 50
+  lr_scheduler: true
+  num_classes: 5
+  seed: 42
+  use_coral: true
+two_stage_vgg16_param_grid:
+- input_channels: 2
+  lr: 0.001
+  shared_features: true
+vgg16_param_grid:
+- input_channels: 1
+  lr: 0.0001
+- input_channels: 1
+  lr: 0.0005

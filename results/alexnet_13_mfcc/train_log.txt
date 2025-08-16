@@ -1,0 +1,90 @@
+# Experiment: new_split_cls_alexnet_mfcc_2025-08-15
+
+===== training_log.txt =====
+
+=== Experiment: new_split_cls_alexnet_mfcc_2025-08-15 ===
+Experiment done
+
+
+===== terminal_log.txt =====
+Loading metadata from all splits...
+/mnt/c/Users/Victor/Documents/NIcE_X/ExtraExperiments/cardio_pause/src/data/loader_new_split.py:27: UserWarning: torchaudio._backend.utils.info has been deprecated. This deprecation is part of a large refactoring effort to transition TorchAudio into a maintenance phase. The decoding and encoding capabilities of PyTorch for both audio and video are being consolidated into TorchCodec. Please see https://github.com/pytorch/audio/issues/3902 for more information. It will be removed from the 2.9 release. 
+  duration = torchaudio.info(wav_path).num_frames / torchaudio.info(wav_path).sample_rate
+/home/victor/miniconda3/envs/exertion_lvl/lib/python3.9/site-packages/torchaudio/_backend/ffmpeg.py:20: UserWarning: torio.io._streaming_media_decoder.StreamingMediaDecoder has been deprecated. This deprecation is part of a large refactoring effort to transition TorchAudio into a maintenance phase. The decoding and encoding capabilities of PyTorch for both audio and video are being consolidated into TorchCodec. Please see https://github.com/pytorch/audio/issues/3902 for more information. It will be removed from the 2.9 release. 
+  s = torchaudio.io.StreamReader(src, format, None, buffer_size)
+/home/victor/miniconda3/envs/exertion_lvl/lib/python3.9/site-packages/torchaudio/_backend/ffmpeg.py:27: UserWarning: torchaudio._backend.common.AudioMetaData has been deprecated. This deprecation is part of a large refactoring effort to transition TorchAudio into a maintenance phase. The decoding and encoding capabilities of PyTorch for both audio and video are being consolidated into TorchCodec. Please see https://github.com/pytorch/audio/issues/3902 for more information. It will be removed from the 2.9 release. 
+  return AudioMetaData(
+Train set: 3275 files
+Val set: 360 files
+Test set: 94 files
+Validating file existence...
+Train - All files exist
+Val - All files exist
+Test - All files exist
+Using pre-defined splits:
+  Train: 3275 sessions
+  Val: 360 sessions
+  Test: 94 sessions
+
+=== Running with params: {'input_channels': 1, 'lr': 0.0001}, feature_type: mfcc ===
+
+====== Running Experiment ======
+Device: cuda
+
+Epoch 1/50
+Train Loss: 0.5001 | Val Loss: 0.4814
+
+Epoch 2/50
+Train Loss: 0.4362 | Val Loss: 0.4814
+
+Epoch 3/50
+Train Loss: 0.4047 | Val Loss: 0.5673
+
+Epoch 4/50
+Train Loss: 0.3872 | Val Loss: 0.4899
+
+Epoch 5/50
+Train Loss: 0.3720 | Val Loss: 0.5059
+
+Epoch 6/50
+Train Loss: 0.3635 | Val Loss: 0.4783
+
+Epoch 7/50
+Train Loss: 0.3626 | Val Loss: 0.5115
+
+Epoch 8/50
+Train Loss: 0.3585 | Val Loss: 0.4790
+
+Epoch 9/50
+Train Loss: 0.3545 | Val Loss: 0.4958
+
+Epoch 10/50
+Train Loss: 0.3513 | Val Loss: 0.4794
+
+Epoch 11/50
+Train Loss: 0.3483 | Val Loss: 0.4843
+Early stopping triggered.
+Model on: cuda:0
+[RAW] Fold 1 | Val Acc: 0.328 | High/Low Acc: 0.717
+[RAW] Fold 1 | Test Acc: 0.468 | High/Low Acc: 0.777
+
+[Validation Performance]
+
+Accuracy: 0.3278
+High/Low Accuracy: 0.7167
+
+[Test Performance]
+
+Accuracy: 0.4681
+High/Low Accuracy: 0.7766
+
+========== Aggregated Metrics (CrossValidation) ==========
+Average Accuracy     : 0.4681
+====================================================
+
+=== Aggregated Metrics ===
+avg_accuracy: 0.46808510638297873
+confusion_matrix_aggregated: [[7, 3, 0, 0, 0], [19, 12, 5, 0, 0], [5, 7, 15, 0, 2], [1, 3, 2, 9, 2], [0, 0, 1, 0, 1]]
+labels: [0, 1, 2, 3, 4]
+
+
