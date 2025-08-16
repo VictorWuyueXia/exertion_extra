@@ -1,0 +1,85 @@
+experiment:
+  model: tcnnlstm       # mlp, lstm, tcnnlstm, alexnet, grunet, vgg16, fused_vgg16gru
+  param_index: 0
+  input_features: ["embed"] # "mfcc", "mfb", "embed"
+  selected_wav2vec2_layers: [4]
+  task: 1
+
+paths:
+  base_dir: ./Data
+
+training:
+  epochs: 50
+  batch_size: 64
+  seed: 42
+  use_coral: true
+  num_classes: 5
+  early_stopping: true
+  lr_scheduler: true
+
+two_stage_vgg16_param_grid:
+- { input_channels: 2, shared_features: true, lr: 0.001 }
+
+
+vgg16_param_grid:
+- { input_channels: 1, lr: 0.0001 }
+- { input_channels: 1, lr: 0.0005 }
+
+
+mlp_param_grid:
+  - { hidden_dim: 128,  num_layers: 2, lr: 0.0001 }
+
+
+lstm_param_grid:
+  - { hidden_dim: 128, attention_dim: 128, num_layers: 2, use_attention: false, lr: 0.0001 }
+  - { hidden_dim: 128, attention_dim: 128, num_layers: 2, use_attention: false, lr: 0.0001 }
+  - { hidden_dim: 128, attention_dim: 128, num_layers: 2, use_attention: false, lr: 0.0001 }
+  - { hidden_dim: 128, attention_dim: 128, num_layers: 2, use_attention: false, lr: 0.0001 }
+
+grunet_param_grid:
+  - { hidden_dim: 128, attention_dim: 128, num_layers: 2, use_attention: false, lr: 0.0001 }
+  - { hidden_dim: 256, attention_dim: 128, num_layers: 2, use_attention: false, lr: 0.0001 }
+  - { hidden_dim: 512, attention_dim: 128, num_layers: 3, use_attention: false, lr: 0.0001 }
+  - { hidden_dim: 512, attention_dim: 256, num_layers: 4, use_attention: false, lr: 0.0001 }
+
+tcnnlstm_param_grid:
+  - {
+    hidden_dim: 128,
+    num_layers: 2,
+    bidirectional: true,
+    kernel_size_conv: 3,
+    padding_conv: 1,
+    stride_conv: 1,
+    dilation_conv: 1,
+    bias_conv: true,
+    groups_conv: 1,
+    lr: 0.0001
+    }
+  - {
+      hidden_dim: 128,
+      num_layers: 2,
+      bidirectional: false,
+      kernel_size_conv: 3,
+      padding_conv: 1,
+      stride_conv: 1,
+      dilation_conv: 1,
+      bias_conv: true,
+      groups_conv: 1,
+      lr: 0.001
+    }
+  - {
+      hidden_dim: 128,
+      num_layers: 2,
+      bidirectional: false,
+      kernel_size_conv: 5,
+      padding_conv: 2,
+      stride_conv: 1,
+      dilation_conv: 1,
+      bias_conv: true,
+      groups_conv: 1,
+      lr: 0.0005
+    }
+
+alexnet_param_grid:
+  - { input_channels: 1, lr: 0.0001 }
+  - { input_channels: 1, lr: 0.0005 }

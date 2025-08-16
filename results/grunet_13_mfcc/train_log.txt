@@ -1,0 +1,96 @@
+# Experiment: new_split_cls_grunet_mfcc_2025-08-15
+
+===== training_log.txt =====
+
+=== Experiment: new_split_cls_grunet_mfcc_2025-08-15 ===
+Experiment done
+
+
+===== terminal_log.txt =====
+Loading metadata from all splits...
+Train set: 3275 files
+Val set: 360 files
+Test set: 94 files
+Validating file existence...
+Train - All files exist
+Val - All files exist
+Test - All files exist
+Using pre-defined splits:
+  Train: 3275 sessions
+  Val: 360 sessions
+  Test: 94 sessions
+
+=== Running with params: {'hidden_dim': 128, 'attention_dim': 128, 'num_layers': 2, 'use_attention': False, 'lr': 0.0001}, feature_type: mfcc ===
+
+====== Running Experiment ======
+Device: cuda
+
+Epoch 1/50
+Train Loss: 0.6535 | Val Loss: 0.6738
+
+Epoch 2/50
+Train Loss: 0.6220 | Val Loss: 0.5904
+
+Epoch 3/50
+Train Loss: 0.5630 | Val Loss: 0.5390
+
+Epoch 4/50
+Train Loss: 0.4877 | Val Loss: 0.5165
+
+Epoch 5/50
+Train Loss: 0.4338 | Val Loss: 0.5137
+
+Epoch 6/50
+Train Loss: 0.4015 | Val Loss: 0.5100
+
+Epoch 7/50
+Train Loss: 0.3925 | Val Loss: 0.5155
+
+Epoch 8/50
+Train Loss: 0.3812 | Val Loss: 0.4845
+
+Epoch 9/50
+Train Loss: 0.3717 | Val Loss: 0.5479
+
+Epoch 10/50
+Train Loss: 0.3747 | Val Loss: 0.4774
+
+Epoch 11/50
+Train Loss: 0.3639 | Val Loss: 0.5774
+
+Epoch 12/50
+Train Loss: 0.3590 | Val Loss: 0.5075
+
+Epoch 13/50
+Train Loss: 0.3601 | Val Loss: 0.5131
+
+Epoch 14/50
+Train Loss: 0.3671 | Val Loss: 0.4912
+
+Epoch 15/50
+Train Loss: 0.3598 | Val Loss: 0.5958
+Early stopping triggered.
+Model on: cuda:0
+[RAW] Fold 1 | Val Acc: 0.250 | High/Low Acc: 0.669
+[RAW] Fold 1 | Test Acc: 0.277 | High/Low Acc: 0.681
+
+[Validation Performance]
+
+Accuracy: 0.2500
+High/Low Accuracy: 0.6694
+
+[Test Performance]
+
+Accuracy: 0.2766
+High/Low Accuracy: 0.6809
+
+========== Aggregated Metrics (CrossValidation) ==========
+Average Accuracy     : 0.2766
+====================================================
+
+=== Aggregated Metrics ===
+avg_accuracy: 0.2765957446808511
+confusion_matrix_aggregated: [[9, 1, 0, 0, 0], [27, 7, 2, 0, 0], [12, 10, 4, 2, 1], [1, 5, 5, 5, 1], [0, 0, 0, 1, 1]]
+labels: [0, 1, 2, 3, 4]
+
+

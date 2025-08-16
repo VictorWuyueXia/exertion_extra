@@ -1,0 +1,87 @@
+# Experiment: new_split_cls_tcnnlstm_mfcc_2025-08-16
+
+===== training_log.txt =====
+
+=== Experiment: new_split_cls_tcnnlstm_mfcc_2025-08-16 ===
+Experiment done
+
+
+===== terminal_log.txt =====
+Loading metadata from all splits...
+Train set: 3275 files
+Val set: 360 files
+Test set: 94 files
+Validating file existence...
+Train - All files exist
+Val - All files exist
+Test - All files exist
+Using pre-defined splits:
+  Train: 3275 sessions
+  Val: 360 sessions
+  Test: 94 sessions
+
+=== Running with params: {'hidden_dim': 128, 'num_layers': 2, 'bidirectional': True, 'kernel_size_conv': 3, 'padding_conv': 1, 'stride_conv': 1, 'dilation_conv': 1, 'bias_conv': True, 'groups_conv': 1, 'lr': 0.0001}, feature_type: mfcc ===
+
+====== Running Experiment ======
+Device: cuda
+
+Epoch 1/50
+Train Loss: 0.6133 | Val Loss: 0.5181
+
+Epoch 2/50
+Train Loss: 0.4887 | Val Loss: 0.4927
+
+Epoch 3/50
+Train Loss: 0.4838 | Val Loss: 0.4887
+
+Epoch 4/50
+Train Loss: 0.4770 | Val Loss: 0.4832
+
+Epoch 5/50
+Train Loss: 0.4664 | Val Loss: 0.4751
+
+Epoch 6/50
+Train Loss: 0.4475 | Val Loss: 0.4654
+
+Epoch 7/50
+Train Loss: 0.4248 | Val Loss: 0.4514
+
+Epoch 8/50
+Train Loss: 0.4076 | Val Loss: 0.4808
+
+Epoch 9/50
+Train Loss: 0.3961 | Val Loss: 0.4714
+
+Epoch 10/50
+Train Loss: 0.3846 | Val Loss: 0.4754
+
+Epoch 11/50
+Train Loss: 0.3775 | Val Loss: 0.4696
+
+Epoch 12/50
+Train Loss: 0.3726 | Val Loss: 0.4761
+Early stopping triggered.
+Model on: cuda:0
+[RAW] Fold 1 | Val Acc: 0.389 | High/Low Acc: 0.758
+[RAW] Fold 1 | Test Acc: 0.351 | High/Low Acc: 0.766
+
+[Validation Performance]
+
+Accuracy: 0.3889
+High/Low Accuracy: 0.7583
+
+[Test Performance]
+
+Accuracy: 0.3511
+High/Low Accuracy: 0.7660
+
+========== Aggregated Metrics (CrossValidation) ==========
+Average Accuracy     : 0.3511
+====================================================
+
+=== Aggregated Metrics ===
+avg_accuracy: 0.35106382978723405
+confusion_matrix_aggregated: [[6, 2, 2, 0, 0], [21, 9, 3, 3, 0], [6, 7, 10, 6, 0], [1, 0, 2, 7, 7], [0, 0, 1, 0, 1]]
+labels: [0, 1, 2, 3, 4]
+
+

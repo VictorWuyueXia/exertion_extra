@@ -1,0 +1,117 @@
+# Experiment: new_split_cls_grunet_mfb_2025-08-15
+
+===== training_log.txt =====
+
+=== Experiment: new_split_cls_grunet_mfb_2025-08-15 ===
+Experiment done
+
+
+===== terminal_log.txt =====
+Loading metadata from all splits...
+Train set: 3275 files
+Val set: 360 files
+Test set: 94 files
+Validating file existence...
+Train - All files exist
+Val - All files exist
+Test - All files exist
+Using pre-defined splits:
+  Train: 3275 sessions
+  Val: 360 sessions
+  Test: 94 sessions
+
+=== Running with params: {'hidden_dim': 128, 'attention_dim': 128, 'num_layers': 2, 'use_attention': False, 'lr': 0.0001}, feature_type: mfb ===
+
+====== Running Experiment ======
+Device: cuda
+
+Epoch 1/50
+Train Loss: 0.6535 | Val Loss: 0.6648
+
+Epoch 2/50
+Train Loss: 0.6310 | Val Loss: 0.6527
+
+Epoch 3/50
+Train Loss: 0.6022 | Val Loss: 0.6543
+
+Epoch 4/50
+Train Loss: 0.5727 | Val Loss: 0.6955
+
+Epoch 5/50
+Train Loss: 0.5488 | Val Loss: 0.6728
+
+Epoch 6/50
+Train Loss: 0.5212 | Val Loss: 0.5951
+
+Epoch 7/50
+Train Loss: 0.4936 | Val Loss: 0.5501
+
+Epoch 8/50
+Train Loss: 0.4651 | Val Loss: 0.7374
+
+Epoch 9/50
+Train Loss: 0.4432 | Val Loss: 0.5066
+
+Epoch 10/50
+Train Loss: 0.4293 | Val Loss: 0.5069
+
+Epoch 11/50
+Train Loss: 0.4033 | Val Loss: 0.5011
+
+Epoch 12/50
+Train Loss: 0.3918 | Val Loss: 0.5558
+
+Epoch 13/50
+Train Loss: 0.3945 | Val Loss: 0.5771
+
+Epoch 14/50
+Train Loss: 0.3878 | Val Loss: 0.4953
+
+Epoch 15/50
+Train Loss: 0.3792 | Val Loss: 0.5075
+
+Epoch 16/50
+Train Loss: 0.3689 | Val Loss: 0.4881
+
+Epoch 17/50
+Train Loss: 0.3629 | Val Loss: 0.4797
+
+Epoch 18/50
+Train Loss: 0.3622 | Val Loss: 0.4859
+
+Epoch 19/50
+Train Loss: 0.3584 | Val Loss: 0.5337
+
+Epoch 20/50
+Train Loss: 0.3586 | Val Loss: 0.4880
+
+Epoch 21/50
+Train Loss: 0.3542 | Val Loss: 0.4842
+
+Epoch 22/50
+Train Loss: 0.3504 | Val Loss: 0.4855
+Early stopping triggered.
+Model on: cuda:0
+[RAW] Fold 1 | Val Acc: 0.297 | High/Low Acc: 0.633
+[RAW] Fold 1 | Test Acc: 0.330 | High/Low Acc: 0.766
+
+[Validation Performance]
+
+Accuracy: 0.2972
+High/Low Accuracy: 0.6333
+
+[Test Performance]
+
+Accuracy: 0.3298
+High/Low Accuracy: 0.7660
+
+========== Aggregated Metrics (CrossValidation) ==========
+Average Accuracy     : 0.3298
+====================================================
+
+=== Aggregated Metrics ===
+avg_accuracy: 0.32978723404255317
+confusion_matrix_aggregated: [[8, 2, 0, 0, 0], [22, 11, 3, 0, 0], [7, 9, 8, 3, 2], [1, 2, 9, 2, 3], [0, 0, 0, 0, 2]]
+labels: [0, 1, 2, 3, 4]
+
+

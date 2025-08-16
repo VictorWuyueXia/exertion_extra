@@ -1,0 +1,82 @@
+# Experiment: new_split_cls_alexnet_embed_4_2025-08-15
+
+===== training_log.txt =====
+
+=== Experiment: new_split_cls_alexnet_embed_4_2025-08-15 ===
+Experiment done
+
+
+===== terminal_log.txt =====
+Loading metadata from all splits...
+Train set: 3275 files
+Val set: 360 files
+Test set: 94 files
+Validating file existence...
+Train - All files exist
+Val - All files exist
+Test - All files exist
+Using pre-defined splits:
+  Train: 3275 sessions
+  Val: 360 sessions
+  Test: 94 sessions
+
+=== Running with params: {'input_channels': 1, 'lr': 0.0001}, feature_type: embed ===
+
+====== Running Experiment ======
+Device: cuda
+
+Epoch 1/50
+Train Loss: 0.5112 | Val Loss: 0.4936
+
+Epoch 2/50
+Train Loss: 0.4621 | Val Loss: 0.9820
+
+Epoch 3/50
+Train Loss: 0.4206 | Val Loss: 0.4854
+
+Epoch 4/50
+Train Loss: 0.3903 | Val Loss: 0.4628
+
+Epoch 5/50
+Train Loss: 0.3691 | Val Loss: 0.4812
+
+Epoch 6/50
+Train Loss: 0.3607 | Val Loss: 0.6354
+
+Epoch 7/50
+Train Loss: 0.3573 | Val Loss: 1.3328
+
+Epoch 8/50
+Train Loss: 0.3565 | Val Loss: 0.7442
+
+Epoch 9/50
+Train Loss: 0.3524 | Val Loss: 0.7157
+
+Epoch 10/50
+Train Loss: 0.3492 | Val Loss: 0.4905
+[LR Scheduler] Epoch 10: LR changed from 0.000100 → 0.000050
+Early stopping triggered.
+Model on: cuda:0
+[RAW] Fold 1 | Val Acc: 0.264 | High/Low Acc: 0.608
+[RAW] Fold 1 | Test Acc: 0.202 | High/Low Acc: 0.585
+
+[Validation Performance]
+
+Accuracy: 0.2639
+High/Low Accuracy: 0.6083
+
+[Test Performance]
+
+Accuracy: 0.2021
+High/Low Accuracy: 0.5851
+
+========== Aggregated Metrics (CrossValidation) ==========
+Average Accuracy     : 0.2021
+====================================================
+
+=== Aggregated Metrics ===
+avg_accuracy: 0.20212765957446807
+confusion_matrix_aggregated: [[10, 0, 0, 0, 0], [31, 3, 2, 0, 0], [11, 15, 3, 0, 0], [2, 7, 5, 3, 0], [0, 2, 0, 0, 0]]
+labels: [0, 1, 2, 3, 4]
+
+

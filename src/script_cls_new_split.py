@@ -119,6 +119,12 @@ def run_experiment_with_config(config: dict):
     val_meta_df = get_session_metadata(val_label_dir, val_audio_dir)
     test_meta_df = get_session_metadata(test_label_dir, test_audio_dir)
     
+    # Filter by task
+    task_keep = {config["experiment"]["task"]}
+    train_meta_df = train_meta_df[train_meta_df["task"].astype(str).isin(task_keep)]
+    val_meta_df   = val_meta_df[val_meta_df["task"].astype(str).isin(task_keep)]
+    test_meta_df  = test_meta_df[test_meta_df["task"].astype(str).isin(task_keep)]
+    
     print(f"Train set: {len(train_meta_df)} files")
     print(f"Val set: {len(val_meta_df)} files")
     print(f"Test set: {len(test_meta_df)} files")

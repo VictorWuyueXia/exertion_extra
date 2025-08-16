@@ -1,0 +1,82 @@
+# Experiment: new_split_cls_tcnnlstm_embed_4_2025-08-16
+
+===== training_log.txt =====
+
+=== Experiment: new_split_cls_tcnnlstm_embed_4_2025-08-16 ===
+Experiment done
+
+
+===== terminal_log.txt =====
+Loading metadata from all splits...
+Train set: 3275 files
+Val set: 360 files
+Test set: 94 files
+Validating file existence...
+Train - All files exist
+Val - All files exist
+Test - All files exist
+Using pre-defined splits:
+  Train: 3275 sessions
+  Val: 360 sessions
+  Test: 94 sessions
+
+=== Running with params: {'hidden_dim': 128, 'num_layers': 2, 'bidirectional': True, 'kernel_size_conv': 3, 'padding_conv': 1, 'stride_conv': 1, 'dilation_conv': 1, 'bias_conv': True, 'groups_conv': 1, 'lr': 0.0001}, feature_type: embed ===
+
+====== Running Experiment ======
+Device: cuda
+
+Epoch 1/50
+Train Loss: 0.5617 | Val Loss: 0.4862
+
+Epoch 2/50
+Train Loss: 0.4553 | Val Loss: 0.4510
+
+Epoch 3/50
+Train Loss: 0.3919 | Val Loss: 0.4579
+
+Epoch 4/50
+Train Loss: 0.3618 | Val Loss: 0.4526
+
+Epoch 5/50
+Train Loss: 0.3519 | Val Loss: 0.4548
+
+Epoch 6/50
+Train Loss: 0.3458 | Val Loss: 0.4586
+
+Epoch 7/50
+Train Loss: 0.3421 | Val Loss: 0.4581
+
+Epoch 8/50
+Train Loss: 0.3409 | Val Loss: 0.4562
+[LR Scheduler] Epoch 8: LR changed from 0.000100 → 0.000050
+
+Epoch 9/50
+Train Loss: 0.3395 | Val Loss: 0.4558
+
+Epoch 10/50
+Train Loss: 0.3386 | Val Loss: 0.4525
+Early stopping triggered.
+Model on: cuda:0
+[RAW] Fold 1 | Val Acc: 0.444 | High/Low Acc: 0.767
+[RAW] Fold 1 | Test Acc: 0.447 | High/Low Acc: 0.787
+
+[Validation Performance]
+
+Accuracy: 0.4444
+High/Low Accuracy: 0.7667
+
+[Test Performance]
+
+Accuracy: 0.4468
+High/Low Accuracy: 0.7872
+
+========== Aggregated Metrics (CrossValidation) ==========
+Average Accuracy     : 0.4468
+====================================================
+
+=== Aggregated Metrics ===
+avg_accuracy: 0.44680851063829785
+confusion_matrix_aggregated: [[5, 5, 0, 0, 0], [19, 12, 4, 1, 0], [1, 11, 14, 2, 1], [1, 2, 3, 9, 2], [0, 0, 0, 0, 2]]
+labels: [0, 1, 2, 3, 4]
+
+
