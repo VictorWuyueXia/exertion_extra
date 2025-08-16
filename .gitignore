@@ -1,0 +1,23 @@
+# 忽略指定的数据目录
+Data/experiments/
+Data/new_test_train/features/
+Data/new_test_train/segmented_audio/
+Data/new_test_train/segmented_labels/
+Data/new_test_val/features/
+Data/new_test_val/segmented_audio/
+Data/new_test_val/segmented_labels/
+Data/new_test_test/features/
+Data/new_test_test/segmented_audio/
+Data/new_test_test/segmented_labels/
+*/_archive/
+_archive/
+clean_data/
+
+# 常见的忽略文件
+*.pyc
+__pycache__/
+.DS_Store
+*.log
+.cache/
+
+
