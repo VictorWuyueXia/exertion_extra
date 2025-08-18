@@ -1,160 +1,208 @@
-# Experiment: new_split_cls_vgg16_embed_4_2025-08-15
+# Experiment: new_split_cls_vgg16_embed_4_2025-08-16
 
 ===== training_log.txt =====
 
-=== Experiment: new_split_cls_vgg16_embed_4_2025-08-15 ===
+=== Experiment: new_split_cls_vgg16_embed_4_2025-08-16 ===
 
-=== Experiment: new_split_cls_vgg16_embed_4_2025-08-15 ===
+=== Experiment: new_split_cls_vgg16_embed_4_2025-08-16 ===
 
-=== Experiment: new_split_cls_vgg16_embed_4_2025-08-15 ===
+=== Experiment: new_split_cls_vgg16_embed_4_2025-08-16 ===
 Experiment done
 
 
 ===== terminal_log.txt =====
+Using CUDA device index: 0 - NVIDIA RTX A6000
 Loading metadata from all splits...
-Train set: 3275 files
-Val set: 360 files
-Test set: 94 files
+Train set: 2511 files
+Val set: 233 files
+Test set: 73 files
 Validating file existence...
 Train - All files exist
 Val - All files exist
 Test - All files exist
 Using pre-defined splits:
-  Train: 3275 sessions
-  Val: 360 sessions
-  Test: 94 sessions
+  Train: 2511 sessions
+  Val: 233 sessions
+  Test: 73 sessions
 
 === Running with params: {'input_channels': 1, 'lr': 0.0001}, feature_type: embed ===
 
 ====== Running Experiment ======
 Device: cuda
+Using DataParallel with 3 GPUs
 
 Epoch 1/50
-Train Loss: 0.5077 | Val Loss: 0.5127
+/home/yl948/temp_Vic/cardio_pause/lib/python3.10/site-packages/torch/nn/modules/linear.py:125: UserWarning: Attempting to run cuBLAS, but there was no current CUDA context! Attempting to set the primary context... (Triggered internally at /pytorch/aten/src/ATen/cuda/CublasHandlePool.cpp:181.)
+  return F.linear(input, self.weight, self.bias)
+Train Loss: 0.5520 | Val Loss: 0.5047
 
 Epoch 2/50
-Train Loss: 0.4949 | Val Loss: 0.5000
+Train Loss: 0.4951 | Val Loss: 0.5061
 
 Epoch 3/50
-Train Loss: 0.4904 | Val Loss: 0.5022
+Train Loss: 0.4950 | Val Loss: 0.5001
 
 Epoch 4/50
-Train Loss: 0.4878 | Val Loss: 0.4984
+Train Loss: 0.4938 | Val Loss: 0.4994
 
 Epoch 5/50
-Train Loss: 0.4880 | Val Loss: 0.5037
+Train Loss: 0.4930 | Val Loss: 0.5006
 
 Epoch 6/50
-Train Loss: 0.4934 | Val Loss: 0.5025
+Train Loss: 0.4977 | Val Loss: 0.5040
 
 Epoch 7/50
-Train Loss: 0.4840 | Val Loss: 0.4960
+Train Loss: 0.4964 | Val Loss: 0.5021
 
 Epoch 8/50
-Train Loss: 0.4835 | Val Loss: 0.5002
+Train Loss: 0.4949 | Val Loss: 0.5145
 
 Epoch 9/50
-Train Loss: 0.4831 | Val Loss: 0.5010
+Train Loss: 0.4954 | Val Loss: 0.5054
 
 Epoch 10/50
-Train Loss: 0.4776 | Val Loss: 0.4893
+Train Loss: 0.4944 | Val Loss: 0.4972
 
 Epoch 11/50
-Train Loss: 0.4774 | Val Loss: 0.4849
+Train Loss: 0.4900 | Val Loss: 0.4969
 
 Epoch 12/50
-Train Loss: 0.4708 | Val Loss: 0.4776
+Train Loss: 0.4906 | Val Loss: 0.4983
 
 Epoch 13/50
-Train Loss: 0.4616 | Val Loss: 0.4672
+Train Loss: 0.4890 | Val Loss: 0.4973
 
 Epoch 14/50
-Train Loss: 0.4520 | Val Loss: 0.4567
+Train Loss: 0.4881 | Val Loss: 0.4957
 
 Epoch 15/50
-Train Loss: 0.4451 | Val Loss: 0.4534
+Train Loss: 0.4873 | Val Loss: 0.4963
 
 Epoch 16/50
-Train Loss: 0.4384 | Val Loss: 0.4561
+Train Loss: 0.4867 | Val Loss: 0.5034
 
 Epoch 17/50
-Train Loss: 0.4377 | Val Loss: 0.4484
+Train Loss: 0.4883 | Val Loss: 0.4923
 
 Epoch 18/50
-Train Loss: 0.4276 | Val Loss: 0.4489
+Train Loss: 0.4851 | Val Loss: 0.4899
 
 Epoch 19/50
-Train Loss: 0.4207 | Val Loss: 0.4516
+Train Loss: 0.4858 | Val Loss: 0.4909
 
 Epoch 20/50
-Train Loss: 0.4166 | Val Loss: 0.4561
+Train Loss: 0.4793 | Val Loss: 0.4928
 
 Epoch 21/50
-Train Loss: 0.4078 | Val Loss: 0.5138
+Train Loss: 0.4768 | Val Loss: 0.4884
 
 Epoch 22/50
-Train Loss: 0.4004 | Val Loss: 0.4436
+Train Loss: 0.4784 | Val Loss: 0.4860
 
 Epoch 23/50
-Train Loss: 0.3928 | Val Loss: 0.4510
+Train Loss: 0.4788 | Val Loss: 0.4840
 
 Epoch 24/50
-Train Loss: 0.3892 | Val Loss: 0.4390
+Train Loss: 0.4712 | Val Loss: 0.4866
 
 Epoch 25/50
-Train Loss: 0.3751 | Val Loss: 0.4413
+Train Loss: 0.4710 | Val Loss: 0.5067
 
 Epoch 26/50
-Train Loss: 0.3680 | Val Loss: 0.4588
+Train Loss: 0.4733 | Val Loss: 0.4866
 
 Epoch 27/50
-Train Loss: 0.3617 | Val Loss: 0.4423
+Train Loss: 0.4664 | Val Loss: 0.4778
 
 Epoch 28/50
-Train Loss: 0.3592 | Val Loss: 0.4356
+Train Loss: 0.4616 | Val Loss: 0.4807
 
 Epoch 29/50
-Train Loss: 0.3525 | Val Loss: 0.4443
+Train Loss: 0.4645 | Val Loss: 0.4746
 
 Epoch 30/50
-Train Loss: 0.3465 | Val Loss: 0.4348
+Train Loss: 0.4578 | Val Loss: 0.4707
 
 Epoch 31/50
-Train Loss: 0.3371 | Val Loss: 0.4494
+Train Loss: 0.4532 | Val Loss: 0.4712
 
 Epoch 32/50
-Train Loss: 0.3357 | Val Loss: 0.4602
+Train Loss: 0.4503 | Val Loss: 0.4661
 
 Epoch 33/50
-Train Loss: 0.3315 | Val Loss: 0.4357
+Train Loss: 0.4482 | Val Loss: 0.4637
 
 Epoch 34/50
-Train Loss: 0.3279 | Val Loss: 0.4507
+Train Loss: 0.4496 | Val Loss: 0.4635
 
 Epoch 35/50
-Train Loss: 0.3266 | Val Loss: 0.4581
-Early stopping triggered.
+Train Loss: 0.4520 | Val Loss: 0.4655
+
+Epoch 36/50
+Train Loss: 0.4431 | Val Loss: 0.4842
+
+Epoch 37/50
+Train Loss: 0.4399 | Val Loss: 0.4609
+
+Epoch 38/50
+Train Loss: 0.4370 | Val Loss: 0.4646
+
+Epoch 39/50
+Train Loss: 0.4325 | Val Loss: 0.4845
+
+Epoch 40/50
+Train Loss: 0.4296 | Val Loss: 0.4619
+
+Epoch 41/50
+Train Loss: 0.4273 | Val Loss: 0.4596
+
+Epoch 42/50
+Train Loss: 0.4249 | Val Loss: 0.4592
+
+Epoch 43/50
+Train Loss: 0.4266 | Val Loss: 0.4647
+
+Epoch 44/50
+Train Loss: 0.4222 | Val Loss: 0.4688
+
+Epoch 45/50
+Train Loss: 0.4107 | Val Loss: 0.4574
+
+Epoch 46/50
+Train Loss: 0.4157 | Val Loss: 0.4706
+
+Epoch 47/50
+Train Loss: 0.4034 | Val Loss: 0.4555
+
+Epoch 48/50
+Train Loss: 0.3934 | Val Loss: 0.4704
+
+Epoch 49/50
+Train Loss: 0.3910 | Val Loss: 0.4791
+
+Epoch 50/50
+Train Loss: 0.3848 | Val Loss: 0.4969
 Model on: cuda:0
-[RAW] Fold 1 | Val Acc: 0.375 | High/Low Acc: 0.731
-[RAW] Fold 1 | Test Acc: 0.426 | High/Low Acc: 0.787
+[RAW] Fold 1 | Val Acc: 0.253 | High/Low Acc: 0.678
+[RAW] Fold 1 | Test Acc: 0.425 | High/Low Acc: 0.685
 
 [Validation Performance]
 
-Accuracy: 0.3750
-High/Low Accuracy: 0.7306
+Accuracy: 0.2532
+High/Low Accuracy: 0.6781
 
 [Test Performance]
 
-Accuracy: 0.4255
-High/Low Accuracy: 0.7872
+Accuracy: 0.4247
+High/Low Accuracy: 0.6849
 
 ========== Aggregated Metrics (CrossValidation) ==========
-Average Accuracy     : 0.4255
+Average Accuracy     : 0.4247
 ====================================================
 
 === Aggregated Metrics ===
-avg_accuracy: 0.425531914893617
-confusion_matrix_aggregated: [[4, 4, 2, 0, 0], [11, 14, 7, 3, 1], [1, 4, 15, 7, 2], [0, 2, 5, 6, 4], [0, 0, 0, 1, 1]]
+avg_accuracy: 0.4246575342465753
+confusion_matrix_aggregated: [[2, 3, 4, 0, 0], [1, 14, 10, 4, 0], [0, 4, 10, 7, 1], [1, 0, 3, 3, 4], [0, 0, 0, 0, 2]]
 labels: [0, 1, 2, 3, 4]
 
 

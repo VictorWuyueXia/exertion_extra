@@ -1,24 +1,24 @@
-# Experiment: new_split_cls_grunet_mfcc_2025-08-15
+# Experiment: new_split_cls_grunet_mfcc_2025-08-16
 
 ===== training_log.txt =====
 
-=== Experiment: new_split_cls_grunet_mfcc_2025-08-15 ===
+=== Experiment: new_split_cls_grunet_mfcc_2025-08-16 ===
 Experiment done
 
 
 ===== terminal_log.txt =====
 Loading metadata from all splits...
-Train set: 3275 files
-Val set: 360 files
-Test set: 94 files
+Train set: 2511 files
+Val set: 233 files
+Test set: 73 files
 Validating file existence...
 Train - All files exist
 Val - All files exist
 Test - All files exist
 Using pre-defined splits:
-  Train: 3275 sessions
-  Val: 360 sessions
-  Test: 94 sessions
+  Train: 2511 sessions
+  Val: 233 sessions
+  Test: 73 sessions
 
 === Running with params: {'hidden_dim': 128, 'attention_dim': 128, 'num_layers': 2, 'use_attention': False, 'lr': 0.0001}, feature_type: mfcc ===
 
@@ -26,71 +26,77 @@ Using pre-defined splits:
 Device: cuda
 
 Epoch 1/50
-Train Loss: 0.6535 | Val Loss: 0.6738
+Train Loss: 0.6712 | Val Loss: 0.6999
 
 Epoch 2/50
-Train Loss: 0.6220 | Val Loss: 0.5904
+Train Loss: 0.6407 | Val Loss: 0.6394
 
 Epoch 3/50
-Train Loss: 0.5630 | Val Loss: 0.5390
+Train Loss: 0.5999 | Val Loss: 0.5662
 
 Epoch 4/50
-Train Loss: 0.4877 | Val Loss: 0.5165
+Train Loss: 0.5367 | Val Loss: 0.5318
 
 Epoch 5/50
-Train Loss: 0.4338 | Val Loss: 0.5137
+Train Loss: 0.4794 | Val Loss: 0.6776
 
 Epoch 6/50
-Train Loss: 0.4015 | Val Loss: 0.5100
+Train Loss: 0.4538 | Val Loss: 0.5238
 
 Epoch 7/50
-Train Loss: 0.3925 | Val Loss: 0.5155
+Train Loss: 0.3961 | Val Loss: 0.5758
 
 Epoch 8/50
-Train Loss: 0.3812 | Val Loss: 0.4845
+Train Loss: 0.3796 | Val Loss: 0.5095
 
 Epoch 9/50
-Train Loss: 0.3717 | Val Loss: 0.5479
+Train Loss: 0.3914 | Val Loss: 0.5156
 
 Epoch 10/50
-Train Loss: 0.3747 | Val Loss: 0.4774
+Train Loss: 0.3670 | Val Loss: 0.5148
 
 Epoch 11/50
-Train Loss: 0.3639 | Val Loss: 0.5774
+Train Loss: 0.3650 | Val Loss: 0.5100
 
 Epoch 12/50
-Train Loss: 0.3590 | Val Loss: 0.5075
+Train Loss: 0.3615 | Val Loss: 0.4968
 
 Epoch 13/50
-Train Loss: 0.3601 | Val Loss: 0.5131
+Train Loss: 0.3670 | Val Loss: 0.5464
 
 Epoch 14/50
-Train Loss: 0.3671 | Val Loss: 0.4912
+Train Loss: 0.3603 | Val Loss: 0.5580
 
 Epoch 15/50
-Train Loss: 0.3598 | Val Loss: 0.5958
+Train Loss: 0.3650 | Val Loss: 0.5516
+
+Epoch 16/50
+Train Loss: 0.3545 | Val Loss: 0.5427
+
+Epoch 17/50
+Train Loss: 0.3521 | Val Loss: 0.5535
 Early stopping triggered.
 Model on: cuda:0
-[RAW] Fold 1 | Val Acc: 0.250 | High/Low Acc: 0.669
-[RAW] Fold 1 | Test Acc: 0.277 | High/Low Acc: 0.681
+[RAW] Fold 1 | Val Acc: 0.356 | High/Low Acc: 0.691
+[RAW] Fold 1 | Test Acc: 0.438 | High/Low Acc: 0.795
 
 [Validation Performance]
 
-Accuracy: 0.2500
-High/Low Accuracy: 0.6694
+Accuracy: 0.3562
+High/Low Accuracy: 0.6910
 
 [Test Performance]
 
-Accuracy: 0.2766
-High/Low Accuracy: 0.6809
+Accuracy: 0.4384
+High/Low Accuracy: 0.7945
 
 ========== Aggregated Metrics (CrossValidation) ==========
-Average Accuracy     : 0.2766
+Average Accuracy     : 0.4384
 ====================================================
 
 === Aggregated Metrics ===
-avg_accuracy: 0.2765957446808511
-confusion_matrix_aggregated: [[9, 1, 0, 0, 0], [27, 7, 2, 0, 0], [12, 10, 4, 2, 1], [1, 5, 5, 5, 1], [0, 0, 0, 1, 1]]
+avg_accuracy: 0.4383561643835616
+confusion_matrix_aggregated: [[6, 2, 1, 0, 0], [16, 11, 2, 0, 0], [4, 7, 9, 2, 0], [1, 0, 5, 5, 0], [0, 0, 0, 1, 1]]
 labels: [0, 1, 2, 3, 4]
 
 

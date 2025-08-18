@@ -251,8 +251,14 @@ def train_model(model_type, model_params, feature_type, input_dim, dataloaders, 
     model_hparams = {k: v for k, v in model_params.items() if k != "lr"}  # Clean out learning rate
     model_output_dim = (num_classes - 1) if use_coral else num_classes
     model = get_model(model_type, model_hparams, input_dim=input_dim, output_dim=model_output_dim).to(device)
+    # Minimal multi-GPU support
+    if device.type == 'cuda' and torch.cuda.device_count() > 1:
+        print(f"Using DataParallel with {torch.cuda.device_count()} GPUs")
+        model = nn.DataParallel(model)
 
     coral_head = CoralHead(model_output_dim, num_classes).to(device) if use_coral else None
+    if use_coral and device.type == 'cuda' and torch.cuda.device_count() > 1:
+        coral_head = nn.DataParallel(coral_head)
 
     params = list(model.parameters()) + (list(coral_head.parameters()) if coral_head is not None else [])
     optimizer = torch.optim.Adam(params, lr=model_params.get("lr", 1e-4))
@@ -405,10 +411,13 @@ def run_experiment(train_loader, val_loader, test_loader, input_dim, epochs=10, 
         acc = accuracy_score(y_val_true, y_val_pred)
         acc_hl = accuracy_score((y_val_true >= 2).astype(int), (y_val_pred >= 2).astype(int))
 
-        labels_present = sorted(set(y_val_true).union(y_val_pred))
-        cm_val = confusion_matrix(y_val_true, y_val_pred, labels=labels_present)
-        val_cm_path = os.path.join(cm_dir, f"{pred_type}_val_confusion_matrix_fold_{fold_idx + 1}.png")
-        save_confusion_matrix(cm_val, labels=[str(l) for l in labels_present], output_path=val_cm_path, title=f"{pred_type.upper()} val_confusion_matrix_fold_{fold_idx + 1}")
+        # labels_present = sorted(set(y_val_true).union(y_val_pred))
+        # cm_val = confusion_matrix(y_val_true, y_val_pred, labels=labels_present)
+        # val_cm_path = os.path.join(cm_dir, f"{pred_type}_val_confusion_matrix_fold_{fold_idx + 1}.png")
+        # save_confusion_matrix(cm_val, labels=[str(l) for l in labels_present], output_path=val_cm_path, title=f"{pred_type.upper()} val_confusion_matrix_fold_{fold_idx + 1}")
+        labels_full = list(range(num_classes))
+        cm_val = confusion_matrix(y_val_true, y_val_pred, labels=labels_full)
+        save_confusion_matrix(cm_val, labels=[str(l) for l in labels_full], output_path=os.path.join(cm_dir, f"{pred_type}_val_confusion_matrix_fold_{fold_idx + 1}.png"), title=f"{pred_type.upper()} val_confusion_matrix_fold_{fold_idx + 1}")
 
         print(f"[{pred_type.upper()}] Fold {fold_idx+1} | Val Acc: {acc:.3f} | High/Low Acc: {acc_hl:.3f}")
 

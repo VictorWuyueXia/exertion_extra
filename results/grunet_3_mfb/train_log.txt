@@ -1,0 +1,133 @@
+# Experiment: new_split_cls_grunet_mfb_2025-08-16
+
+===== training_log.txt =====
+
+=== Experiment: new_split_cls_grunet_mfb_2025-08-16 ===
+Experiment done
+
+=== Experiment: new_split_cls_grunet_mfb_2025-08-16 ===
+Experiment done
+
+
+===== terminal_log.txt =====
+Using CUDA device index: 0 - NVIDIA RTX A6000
+Loading metadata from all splits...
+Train set: 764 files
+Val set: 127 files
+Test set: 21 files
+Validating file existence...
+Train - All files exist
+Val - All files exist
+Test - All files exist
+Using pre-defined splits:
+  Train: 764 sessions
+  Val: 127 sessions
+  Test: 21 sessions
+
+=== Running with params: {'hidden_dim': 128, 'attention_dim': 128, 'num_layers': 2, 'use_attention': False, 'lr': 0.0001}, feature_type: mfb ===
+
+====== Running Experiment ======
+Device: cuda
+
+Epoch 1/50
+Train Loss: 0.6105 | Val Loss: 0.6688
+
+Epoch 2/50
+Train Loss: 0.5818 | Val Loss: 0.6170
+
+Epoch 3/50
+Train Loss: 0.5655 | Val Loss: 0.5833
+
+Epoch 4/50
+Train Loss: 0.5558 | Val Loss: 0.5667
+
+Epoch 5/50
+Train Loss: 0.5489 | Val Loss: 0.5757
+
+Epoch 6/50
+Train Loss: 0.5422 | Val Loss: 0.5915
+
+Epoch 7/50
+Train Loss: 0.5344 | Val Loss: 0.5747
+
+Epoch 8/50
+Train Loss: 0.5262 | Val Loss: 0.5850
+
+Epoch 9/50
+Train Loss: 0.5159 | Val Loss: 0.5366
+
+Epoch 10/50
+Train Loss: 0.5055 | Val Loss: 0.5772
+
+Epoch 11/50
+Train Loss: 0.4916 | Val Loss: 0.5108
+
+Epoch 12/50
+Train Loss: 0.4797 | Val Loss: 0.5858
+
+Epoch 13/50
+Train Loss: 0.4646 | Val Loss: 0.5854
+
+Epoch 14/50
+Train Loss: 0.4540 | Val Loss: 0.5070
+
+Epoch 15/50
+Train Loss: 0.4493 | Val Loss: 0.4803
+
+Epoch 16/50
+Train Loss: 0.4318 | Val Loss: 0.4850
+
+Epoch 17/50
+Train Loss: 0.4327 | Val Loss: 0.4809
+
+Epoch 18/50
+Train Loss: 0.4100 | Val Loss: 0.4912
+
+Epoch 19/50
+Train Loss: 0.4040 | Val Loss: 0.4686
+
+Epoch 20/50
+Train Loss: 0.3962 | Val Loss: 0.4700
+
+Epoch 21/50
+Train Loss: 0.3919 | Val Loss: 0.4626
+
+Epoch 22/50
+Train Loss: 0.3872 | Val Loss: 0.4886
+
+Epoch 23/50
+Train Loss: 0.3814 | Val Loss: 0.5230
+
+Epoch 24/50
+Train Loss: 0.3976 | Val Loss: 0.5991
+
+Epoch 25/50
+Train Loss: 0.3978 | Val Loss: 0.4925
+
+Epoch 26/50
+Train Loss: 0.3940 | Val Loss: 0.5034
+Early stopping triggered.
+Model on: cuda:0
+[RAW] Fold 1 | Val Acc: 0.402 | High/Low Acc: 0.669
+[RAW] Fold 1 | Test Acc: 0.381 | High/Low Acc: 0.619
+
+[Validation Performance]
+
+Accuracy: 0.4016
+High/Low Accuracy: 0.6693
+
+[Test Performance]
+
+Accuracy: 0.3810
+High/Low Accuracy: 0.6190
+
+========== Aggregated Metrics (CrossValidation) ==========
+Average Accuracy     : 0.3810
+====================================================
+
+=== Aggregated Metrics ===
+avg_accuracy: 0.38095238095238093
+confusion_matrix_aggregated: [[1, 0, 0, 0], [4, 2, 1, 0], [1, 3, 3, 0], [0, 3, 1, 2]]
+labels: [0, 1, 2, 3]
+
+

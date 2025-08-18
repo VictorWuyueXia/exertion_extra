@@ -1,24 +1,24 @@
-# Experiment: new_split_cls_alexnet_embed_4_2025-08-15
+# Experiment: new_split_cls_alexnet_embed_4_2025-08-16
 
 ===== training_log.txt =====
 
-=== Experiment: new_split_cls_alexnet_embed_4_2025-08-15 ===
+=== Experiment: new_split_cls_alexnet_embed_4_2025-08-16 ===
 Experiment done
 
 
 ===== terminal_log.txt =====
 Loading metadata from all splits...
-Train set: 3275 files
-Val set: 360 files
-Test set: 94 files
+Train set: 2511 files
+Val set: 233 files
+Test set: 73 files
 Validating file existence...
 Train - All files exist
 Val - All files exist
 Test - All files exist
 Using pre-defined splits:
-  Train: 3275 sessions
-  Val: 360 sessions
-  Test: 94 sessions
+  Train: 2511 sessions
+  Val: 233 sessions
+  Test: 73 sessions
 
 === Running with params: {'input_channels': 1, 'lr': 0.0001}, feature_type: embed ===
 
@@ -26,57 +26,57 @@ Using pre-defined splits:
 Device: cuda
 
 Epoch 1/50
-Train Loss: 0.5112 | Val Loss: 0.4936
+Train Loss: 0.5246 | Val Loss: 0.5418
 
 Epoch 2/50
-Train Loss: 0.4621 | Val Loss: 0.9820
+Train Loss: 0.4735 | Val Loss: 0.4890
 
 Epoch 3/50
-Train Loss: 0.4206 | Val Loss: 0.4854
+Train Loss: 0.4410 | Val Loss: 0.4834
 
 Epoch 4/50
-Train Loss: 0.3903 | Val Loss: 0.4628
+Train Loss: 0.4054 | Val Loss: 0.5177
 
 Epoch 5/50
-Train Loss: 0.3691 | Val Loss: 0.4812
+Train Loss: 0.3796 | Val Loss: 0.5311
 
 Epoch 6/50
-Train Loss: 0.3607 | Val Loss: 0.6354
+Train Loss: 0.3659 | Val Loss: 0.5309
 
 Epoch 7/50
-Train Loss: 0.3573 | Val Loss: 1.3328
+Train Loss: 0.3583 | Val Loss: 1.2077
 
 Epoch 8/50
-Train Loss: 0.3565 | Val Loss: 0.7442
+Train Loss: 0.3564 | Val Loss: 0.5887
 
 Epoch 9/50
-Train Loss: 0.3524 | Val Loss: 0.7157
+Train Loss: 0.3521 | Val Loss: 0.5654
+[LR Scheduler] Epoch 9: LR changed from 0.000100 → 0.000050
 
 Epoch 10/50
-Train Loss: 0.3492 | Val Loss: 0.4905
-[LR Scheduler] Epoch 10: LR changed from 0.000100 → 0.000050
+Train Loss: 0.3503 | Val Loss: 0.4883
 Early stopping triggered.
 Model on: cuda:0
-[RAW] Fold 1 | Val Acc: 0.264 | High/Low Acc: 0.608
-[RAW] Fold 1 | Test Acc: 0.202 | High/Low Acc: 0.585
+[RAW] Fold 1 | Val Acc: 0.395 | High/Low Acc: 0.652
+[RAW] Fold 1 | Test Acc: 0.438 | High/Low Acc: 0.685
 
 [Validation Performance]
 
-Accuracy: 0.2639
-High/Low Accuracy: 0.6083
+Accuracy: 0.3948
+High/Low Accuracy: 0.6524
 
 [Test Performance]
 
-Accuracy: 0.2021
-High/Low Accuracy: 0.5851
+Accuracy: 0.4384
+High/Low Accuracy: 0.6849
 
 ========== Aggregated Metrics (CrossValidation) ==========
-Average Accuracy     : 0.2021
+Average Accuracy     : 0.4384
 ====================================================
 
 === Aggregated Metrics ===
-avg_accuracy: 0.20212765957446807
-confusion_matrix_aggregated: [[10, 0, 0, 0, 0], [31, 3, 2, 0, 0], [11, 15, 3, 0, 0], [2, 7, 5, 3, 0], [0, 2, 0, 0, 0]]
+avg_accuracy: 0.4383561643835616
+confusion_matrix_aggregated: [[4, 4, 1, 0, 0], [6, 15, 7, 1, 0], [1, 10, 10, 1, 0], [2, 1, 4, 3, 1], [0, 0, 1, 1, 0]]
 labels: [0, 1, 2, 3, 4]
 
 

@@ -1,8 +1,9 @@
 experiment:
-  model: tcnnlstm       # mlp, lstm, tcnnlstm, alexnet, grunet, vgg16, fused_vgg16gru
+  model: vgg16       # mlp, lstm, tcnnlstm, alexnet, grunet, vgg16, fused_vgg16gru
   param_index: 0
-  input_features: ["mfb"] # "mfcc", "mfb", "embed"
-  selected_wav2vec2_layers: [4]
+  input_features: ["mfb"] # "mfcc", "mfb", "embed", "mfcc+embed", "mfb+embed"
+  selected_wav2vec2_layers: [4] # 4, 6, 7, 8, 12
+  task: 3
 
 paths:
   base_dir: ./Data

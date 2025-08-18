@@ -105,6 +105,13 @@ def run_experiment_with_config(config: dict):
     log_terminal_path = os.path.join(config_dir, "terminal_log.txt")
     sys.stdout = sys.stderr = TeeLogger(log_terminal_path)
 
+    # Print device/GPU info before training starts
+    if device.type == "cuda":
+        gpu_index = torch.cuda.current_device()
+        print(f"Using CUDA device index: {gpu_index} - {torch.cuda.get_device_name(gpu_index)}")
+    else:
+        print("Using CPU (no CUDA available)")
+
     # --- 4. Training Config ---
     set_seed(config["training"]["seed"])
     n_epoch     = config["training"]["epochs"]
@@ -119,8 +126,8 @@ def run_experiment_with_config(config: dict):
     val_meta_df = get_session_metadata(val_label_dir, val_audio_dir)
     test_meta_df = get_session_metadata(test_label_dir, test_audio_dir)
     
-    # Filter by task
-    task_keep = {config["experiment"]["task"]}
+    # Filter by task (ensure type consistency: compare strings to strings)
+    task_keep = {str(config["experiment"]["task"])}
     train_meta_df = train_meta_df[train_meta_df["task"].astype(str).isin(task_keep)]
     val_meta_df   = val_meta_df[val_meta_df["task"].astype(str).isin(task_keep)]
     test_meta_df  = test_meta_df[test_meta_df["task"].astype(str).isin(task_keep)]
@@ -176,65 +183,72 @@ def run_experiment_with_config(config: dict):
     all_test_file_acc = []
 
     # Run experiments
-    for feature_type in input_features:
-        print(f"\n=== Running with params: {params}, feature_type: {feature_type} ===")
-        
-        use_mfcc_flag = (feature_type=="mfcc") or (feature_type=="embed" and model=="vgg16")
-        use_mfb_flag = (feature_type=="mfb")
-        use_embed_flag = (feature_type=="embed")
-        
+    for feature_spec in input_features:
+        print(f"\n=== Running with params: {params}, feature_spec: {feature_spec} ===")
+
+        parts = feature_spec.split("+")
+        parts = [p.strip().lower() for p in parts]
+
+        use_mfcc_flag  = ("mfcc"  in parts)
+        use_mfb_flag   = ("mfb"   in parts)
+        use_embed_flag = ("embed" in parts)
+
+        # Choose feature key to read from batch
+        main_key = "concat" if len(parts) > 1 else parts[0]
+
         # Create data loaders using pre-defined splits
         train_loader = get_dataloader_from_sessions(
-            train_sessions, train_meta_df, 
-            feature_dir=train_feature_dir, label_dir=train_label_dir, 
-            use_mfcc=use_mfcc_flag, 
-            use_mfb=use_mfb_flag, 
-            use_embed=use_embed_flag, 
-            selected_wav2vec2_layers = selected_wav2vec2_layers, 
-            batch_size=batch_size, shuffle=True, num_workers = num_workers, pin_memory=True)
-        
-        val_loader = get_dataloader_from_sessions(
-            val_sessions, val_meta_df, 
-            feature_dir=val_feature_dir, label_dir=val_label_dir, 
-            use_mfcc=use_mfcc_flag, 
-            use_mfb=use_mfb_flag, 
-            use_embed=use_embed_flag, 
-            selected_wav2vec2_layers = selected_wav2vec2_layers, 
-            batch_size=batch_size, shuffle=False, num_workers = num_workers,pin_memory=True)
-        
-        test_loader = get_dataloader_from_sessions(
-            test_sessions, test_meta_df, 
-            feature_dir=test_feature_dir, label_dir=test_label_dir, 
-            use_mfcc=use_mfcc_flag, 
-            use_mfb=use_mfb_flag, 
-            use_embed=use_embed_flag, 
-            selected_wav2vec2_layers = selected_wav2vec2_layers, 
-            batch_size=batch_size, shuffle=False, num_workers = num_workers, pin_memory=True)
+            train_sessions, train_meta_df,
+            feature_dir=train_feature_dir, label_dir=train_label_dir,
+            use_mfcc=use_mfcc_flag,
+            use_mfb=use_mfb_flag,
+            use_embed=use_embed_flag,
+            selected_wav2vec2_layers=selected_wav2vec2_layers,
+            batch_size=batch_size, shuffle=True, num_workers=num_workers, pin_memory=True)
 
+        val_loader = get_dataloader_from_sessions(
+            val_sessions, val_meta_df,
+            feature_dir=val_feature_dir, label_dir=val_label_dir,
+            use_mfcc=use_mfcc_flag,
+            use_mfb=use_mfb_flag,
+            use_embed=use_embed_flag,
+            selected_wav2vec2_layers=selected_wav2vec2_layers,
+            batch_size=batch_size, shuffle=False, num_workers=num_workers, pin_memory=True)
+
+        test_loader = get_dataloader_from_sessions(
+            test_sessions, test_meta_df,
+            feature_dir=test_feature_dir, label_dir=test_label_dir,
+            use_mfcc=use_mfcc_flag,
+            use_mfb=use_mfb_flag,
+            use_embed=use_embed_flag,
+            selected_wav2vec2_layers=selected_wav2vec2_layers,
+            batch_size=batch_size, shuffle=False, num_workers=num_workers, pin_memory=True)
+
+        # Infer input_dim from a sample batch
         for batch in train_loader:
-            # Get primary feature safely
-            x = batch.get(feature_type, None)
+            x = batch.get(main_key, None)
             if x is not None:
                 input_dim = x.shape[-1]
+                print(f"[INFO] Using feature key '{main_key}' with shape: {tuple(x.shape)}")
             else:
-                print(f"[DEBUG] ERROR: Primary feature '{feature_type}' is None!")
-                print(f"[DEBUG] Available features: {[k for k, v in batch.items() if v is not None and k not in ['session_ids', 'participants', 'speeds', 'tasks', 'durations']]}")
-                # Fallback - this should not happen with correct flags
+                print(f"[DEBUG] ERROR: Primary feature key '{main_key}' is None!")
                 available_features = [k for k, v in batch.items() if v is not None and hasattr(v, 'shape')]
                 if available_features:
-                    x = batch[available_features[0]]
+                    fallback_key = available_features[0]
+                    x = batch[fallback_key]
                     input_dim = x.shape[-1]
-                    print(f"[DEBUG] Using fallback feature: {available_features[0]}, shape: {x.shape}")
+                    print(f"[DEBUG] Fallback feature: {fallback_key}, shape: {tuple(x.shape)}")
+                    main_key = fallback_key
                 else:
                     raise ValueError("No valid features found in batch!")
             break
-        
+
         print(f"\n====== Running Experiment ======")
         metrics = run_experiment(
             train_loader, val_loader, test_loader,
             input_dim=input_dim, epochs=n_epoch,
             loss_plt_dir=loss_plt_dir, per_file_dir=per_file_dir, metrics_dir=metrics_dir, cm_dir=cm_dir,
-            fold_idx=0, model_type=model, feature_type=feature_type, device=device,
+            fold_idx=0, model_type=model, feature_type=main_key, device=device,
             use_coral=use_coral, num_classes=num_classes,
             **model_param_dict
         )

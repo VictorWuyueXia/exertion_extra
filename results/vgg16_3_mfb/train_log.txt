@@ -1,0 +1,95 @@
+# Experiment: new_split_cls_vgg16_mfb_2025-08-16
+
+===== training_log.txt =====
+
+=== Experiment: new_split_cls_vgg16_mfb_2025-08-16 ===
+Experiment done
+
+=== Experiment: new_split_cls_vgg16_mfb_2025-08-16 ===
+Experiment done
+
+=== Experiment: new_split_cls_vgg16_mfb_2025-08-16 ===
+Experiment done
+
+=== Experiment: new_split_cls_vgg16_mfb_2025-08-16 ===
+Experiment done
+
+=== Experiment: new_split_cls_vgg16_mfb_2025-08-16 ===
+Experiment done
+
+
+===== terminal_log.txt =====
+Using CUDA device index: 0 - NVIDIA RTX A6000
+Loading metadata from all splits...
+Train set: 764 files
+Val set: 127 files
+Test set: 21 files
+Validating file existence...
+Train - All files exist
+Val - All files exist
+Test - All files exist
+Using pre-defined splits:
+  Train: 764 sessions
+  Val: 127 sessions
+  Test: 21 sessions
+
+=== Running with params: {'input_channels': 1, 'lr': 0.0001}, feature_type: mfb ===
+
+====== Running Experiment ======
+Device: cuda
+
+Epoch 1/50
+Train Loss: 0.5940 | Val Loss: 0.4937
+
+Epoch 2/50
+Train Loss: 0.4881 | Val Loss: 0.4753
+
+Epoch 3/50
+Train Loss: 0.4777 | Val Loss: 0.4755
+
+Epoch 4/50
+Train Loss: 0.4685 | Val Loss: 0.4761
+
+Epoch 5/50
+Train Loss: 0.4677 | Val Loss: 0.4824
+
+Epoch 6/50
+Train Loss: 0.4645 | Val Loss: 0.4763
+
+Epoch 7/50
+Train Loss: 0.4642 | Val Loss: 0.4907
+
+Epoch 8/50
+Train Loss: 0.4662 | Val Loss: 0.4958
+[LR Scheduler] Epoch 8: LR changed from 0.000100 → 0.000050
+
+Epoch 9/50
+Train Loss: 0.4638 | Val Loss: 0.4923
+
+Epoch 10/50
+Train Loss: 0.4614 | Val Loss: 0.4899
+Early stopping triggered.
+Model on: cuda:0
+[RAW] Fold 1 | Val Acc: 0.244 | High/Low Acc: 0.370
+[RAW] Fold 1 | Test Acc: 0.381 | High/Low Acc: 0.524
+
+[Validation Performance]
+
+Accuracy: 0.2441
+High/Low Accuracy: 0.3701
+
+[Test Performance]
+
+Accuracy: 0.3810
+High/Low Accuracy: 0.5238
+
+========== Aggregated Metrics (CrossValidation) ==========
+Average Accuracy     : 0.3810
+====================================================
+
+=== Aggregated Metrics ===
+avg_accuracy: 0.38095238095238093
+confusion_matrix_aggregated: [[1, 0, 0, 0, 0], [1, 6, 0, 0, 0], [0, 6, 1, 0, 0], [0, 4, 2, 0, 0], [0, 0, 0, 0, 0]]
+labels: [0, 1, 2, 3, 4]
+
+

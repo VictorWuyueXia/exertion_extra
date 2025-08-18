@@ -2,9 +2,9 @@
 """
 Feature extraction for new split data.
 Extracts:
-1. MFB: (300, 40) - Kaldi-style mel filter bank
+1. MFB: (750, 40) - Kaldi-style mel filter bank
 2. MFCC: (1501, 40) - Mel-frequency cepstral coefficients  
-3. Wav2Vec2: (749, 768) - Layers 4, 7, 8, 12
+3. Wav2Vec2: (749, 768) - Layers 4, 6, 7, 8, 12
 
 All features extracted from 15s audio segments resampled to 16kHz.
 """
@@ -54,18 +54,18 @@ def load_and_resample_audio(wav_path, sr_target=16000):
     return waveform.squeeze(0).numpy(), sr_target
 
 
-def extract_mfb(audio, sr=16000, target_frames=300):
-    """Extract MFB features using Kaldi - target shape (300, 40)"""
-    # Convert to tensor for Kaldi
+def extract_mfb(audio, sr=16000, target_frames=750):
+    """提取MFB特征，目标形状为 (750, 40)"""
+    # 转为tensor以适配Kaldi
     if isinstance(audio, np.ndarray):
         audio_tensor = torch.tensor(audio, dtype=torch.float32)
     else:
         audio_tensor = audio
-    
-    # Kaldi fbank parameters tuned for 300 frames from 15s audio
-    # 15s * 20Hz = 300 frames, so frame_shift = 15s / 300 = 0.05s = 50ms
-    frame_shift_ms = (15.0 / target_frames) * 1000  # Convert to milliseconds
-    
+
+    # Kaldi fbank参数调整为15s音频提取750帧
+    # 15s / 750 ≈ 0.02s ≈ 20ms
+    frame_shift_ms = (15.0 / target_frames) * 1000  # 毫秒
+
     mfb = kaldi.fbank(
         waveform=audio_tensor.unsqueeze(0),
         num_mel_bins=40,
@@ -76,25 +76,25 @@ def extract_mfb(audio, sr=16000, target_frames=300):
         energy_floor=0.0,
         use_energy=False
     )
-    
-    # Align to exactly target_frames
+
+    # 对齐到target_frames帧
     mfb = align_frames(mfb, target_frames)
-    
+
     return mfb.numpy()
 
 
-def extract_mfcc(audio, sr=16000, target_frames=1501):
-    """Extract MFCC features using torchaudio - target shape (1501, 40)"""
-    # Convert to tensor if needed
+def extract_mfcc(audio, sr=16000, target_frames=750):
+    """使用torchaudio提取MFCC特征，目标形状为 (750, 40)"""
+    # 如有需要，转为tensor
     if isinstance(audio, np.ndarray):
         audio_tensor = torch.tensor(audio, dtype=torch.float32)
     else:
         audio_tensor = audio
-    
-    # Calculate hop_length for target frames
-    # 15s * 100Hz = 1501 frames, so hop_length = 15s / 1501 = 0.01s = 160 samples @ 16kHz
+
+    # 计算hop_length以获得目标帧数
+    # 15s / 750 ≈ 0.02s，每帧约20ms，@16kHz约320采样点
     hop_length = int(sr * 15.0 / target_frames)
-    
+
     mfcc_transform = T.MFCC(
         sample_rate=sr,
         n_mfcc=40,
@@ -107,16 +107,16 @@ def extract_mfcc(audio, sr=16000, target_frames=1501):
             "window_fn": torch.hann_window
         }
     )
-    
-    mfcc = mfcc_transform(audio_tensor.unsqueeze(0)).squeeze(0).T  # shape: (T, 40)
-    
-    # Align to exactly target_frames
+
+    mfcc = mfcc_transform(audio_tensor.unsqueeze(0)).squeeze(0).T  # 形状: (T, 40)
+
+    # 对齐到target_frames帧
     mfcc = align_frames(mfcc, target_frames)
-    
+
     return mfcc.numpy()
 
 
-def extract_wav2vec2(audio, sr=16000, target_frames=749, selected_layers=(4, 7, 8, 12)):
+def extract_wav2vec2(audio, sr=16000, target_frames=750, selected_layers=(4, 6, 7, 8, 12)):
     """Extract Wav2Vec2 embeddings - target shape (749, 768) for each layer"""
     initialize_wav2vec2_model()
     
@@ -145,23 +145,29 @@ def extract_wav2vec2(audio, sr=16000, target_frames=749, selected_layers=(4, 7, 
         for layer_idx in selected_layers:
             # Get features for this layer
             features = outputs.hidden_states[layer_idx][0].cpu().numpy()  # shape: (T, 768)
-            
-            # Align to target frames
+
+            # Align to target frames (align_frames returns torch.Tensor)
             features = align_frames(features, target_frames)
-            
+
+            # Save as numpy
+            if torch.is_tensor(features):
+                features = features.cpu().numpy()
             layer_features[f'layer{layer_idx}'] = features
     
     return layer_features
 
 
 def align_frames(feature, target_frames):
-    """Align feature tensor to target number of frames"""
+    """Align feature to target number of frames. Accepts numpy array or torch tensor, returns torch tensor."""
+    # Ensure torch tensor for uniform ops
+    if isinstance(feature, np.ndarray):
+        feature = torch.tensor(feature, dtype=torch.float32)
+
     current_frames = feature.shape[0]
-    
+
     if current_frames == target_frames:
         return feature
     elif current_frames < target_frames:
-        # Pad with last frame
         pad_length = target_frames - current_frames
         if feature.dim() == 1:
             last_frame = feature[-1:].repeat(pad_length)
@@ -170,7 +176,6 @@ def align_frames(feature, target_frames):
             last_frame = feature[-1:].repeat(pad_length, 1)
             return torch.cat([feature, last_frame], dim=0)
     else:
-        # Truncate to target frames
         return feature[:target_frames]
 
 
@@ -196,16 +201,16 @@ def process_single_file(args):
         if abs(duration - 15.0) > 0.5:  # Allow 0.5s tolerance
             print(f"Warning: {session_id} duration is {duration:.2f}s (expected ~15s)")
         
-        # Extract MFB (300, 40)
-        mfb = extract_mfb(audio, sr, target_frames=300)
+        # Extract MFB (750, 40)
+        mfb = extract_mfb(audio, sr, target_frames=750)
         np.save(os.path.join(session_dir, "mfb.npy"), mfb)
         
-        # Extract MFCC (1501, 40)
-        mfcc = extract_mfcc(audio, sr, target_frames=1501)
+        # Extract MFCC (750, 40)
+        mfcc = extract_mfcc(audio, sr, target_frames=750)
         np.save(os.path.join(session_dir, "mfcc.npy"), mfcc)
         
-        # Extract Wav2Vec2 embeddings (749, 768) for each layer
-        wav2vec_features = extract_wav2vec2(audio, sr, target_frames=749, selected_layers=(4, 7, 8, 12))
+        # Extract Wav2Vec2 embeddings (750, 768) for each layer
+        wav2vec_features = extract_wav2vec2(audio, sr, target_frames=750, selected_layers=(4, 6, 7, 8, 12))
         
         for layer_name, features in wav2vec_features.items():
             np.save(os.path.join(wav2vec_dir, f"wav2vec2_{layer_name}.npy"), features)
@@ -288,9 +293,9 @@ def main():
     print(f"Success rate: {(total_success / (total_success + total_failed) * 100):.1f}%")
     
     print(f"\nFeature dimensions:")
-    print(f"  MFB: (300, 40)")
-    print(f"  MFCC: (1501, 40)")
-    print(f"  Wav2Vec2: (749, 768) for layers 4, 7, 8, 12")
+    print(f"  MFB: (750, 40)")
+    print(f"  MFCC: (750, 40)")
+    print(f"  Wav2Vec2: (750, 768) for layers 4, 6, 7, 8, 12")
     
     print(f"\nOutput directories:")
     for split_name in splits:

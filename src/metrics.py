@@ -332,17 +332,17 @@ def compute_metrics(y_true, y_pred, label_names=["0", "1", "2", "3", "4"], outpu
     else:
         acc_hl = float("nan")
 
-    # Confusion matrix with dynamic labels
-    labels_present = sorted(set(np.unique(y_true)).union(np.unique(y_pred)))
-    cm = confusion_matrix(y_true, y_pred, labels=labels_present)
+    # Confusion matrix with fixed labels (0..4)
+    labels_full = list(range(len(label_names)))  # -> [0,1,2,3,4]
+    cm = confusion_matrix(y_true, y_pred, labels=labels_full)
 
     result = {
         "accuracy": float(acc),
         "binary_accuracy": float(acc_hl),
-        "labels": [int(l) for l in labels_present],
+        "labels": labels_full,
         "confusion_matrix": cm.tolist()
     }
-
+    
     if output_path:
         os.makedirs(os.path.dirname(output_path), exist_ok=True)
         with open(output_path, "w") as f:
@@ -397,12 +397,15 @@ def aggregate_fold_metrics(metrics_list, cm_dir = "results/confusion_matrices"):
     all_y_true = np.concatenate(all_y_true)
     all_y_pred = np.concatenate(all_y_pred)
 
-    labels_present_agg = sorted(set(all_y_true).union(all_y_pred))
-    cm_agg = confusion_matrix(all_y_true, all_y_pred, labels=labels_present_agg)
-    save_confusion_matrix(cm_agg,
-                          labels=[str(l) for l in labels_present_agg],
-                          output_path=os.path.join(cm_dir, "confusion_matrix_aggregated.png"),
-                          title="Confusion Matrix - Aggregated")
+    # labels_present_agg = sorted(set(all_y_true).union(all_y_pred))
+    # cm_agg = confusion_matrix(all_y_true, all_y_pred, labels=labels_present_agg)
+    # save_confusion_matrix(cm_agg,
+    #                       labels=[str(l) for l in labels_present_agg],
+    #                       output_path=os.path.join(cm_dir, "confusion_matrix_aggregated.png"),
+    #                       title="Confusion Matrix - Aggregated")
+    labels_full = list(range(5))  # 或函数参数传入
+    cm_agg = confusion_matrix(all_y_true, all_y_pred, labels=labels_full)
+    save_confusion_matrix(cm_agg, labels=[str(l) for l in labels_full], output_path=os.path.join(cm_dir, "confusion_matrix_aggregated.png"), title="Confusion Matrix - Aggregated")
 
     avg_accuracy = float(np.mean(accs)) if accs else float('nan')
 
@@ -413,7 +416,7 @@ def aggregate_fold_metrics(metrics_list, cm_dir = "results/confusion_matrices"):
     return {
         "avg_accuracy": avg_accuracy,
         "confusion_matrix_aggregated": cm_agg.tolist(),
-        "labels": [int(l) for l in labels_present_agg]
+        "labels": [int(l) for l in labels_full]
     }
     
 # Notes for metrics:

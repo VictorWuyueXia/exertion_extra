@@ -1,0 +1,144 @@
+# Experiment: new_split_cls_alexnet_mfb_2025-08-16
+
+===== training_log.txt =====
+
+=== Experiment: new_split_cls_alexnet_mfb_2025-08-16 ===
+Experiment done
+
+
+===== terminal_log.txt =====
+Loading metadata from all splits...
+Train set: 2511 files
+Val set: 233 files
+Test set: 73 files
+Validating file existence...
+Train - All files exist
+Val - All files exist
+Test - All files exist
+Using pre-defined splits:
+  Train: 2511 sessions
+  Val: 233 sessions
+  Test: 73 sessions
+
+=== Running with params: {'input_channels': 1, 'lr': 0.0001}, feature_type: mfb ===
+
+====== Running Experiment ======
+Device: cuda
+
+Epoch 1/50
+Train Loss: 0.5123 | Val Loss: 0.5423
+
+Epoch 2/50
+Train Loss: 0.4291 | Val Loss: 0.5114
+
+Epoch 3/50
+Train Loss: 0.3826 | Val Loss: 0.4933
+
+Epoch 4/50
+Train Loss: 0.3654 | Val Loss: 0.5035
+
+Epoch 5/50
+Train Loss: 0.3602 | Val Loss: 0.4995
+
+Epoch 6/50
+Train Loss: 0.3546 | Val Loss: 0.4890
+
+Epoch 7/50
+Train Loss: 0.3525 | Val Loss: 0.4795
+
+Epoch 8/50
+Train Loss: 0.3498 | Val Loss: 0.5052
+
+Epoch 9/50
+Train Loss: 0.3452 | Val Loss: 0.4965
+
+Epoch 10/50
+Train Loss: 0.3473 | Val Loss: 0.4853
+
+Epoch 11/50
+Train Loss: 0.3447 | Val Loss: 0.4784
+
+Epoch 12/50
+Train Loss: 0.3427 | Val Loss: 0.4815
+
+Epoch 13/50
+Train Loss: 0.3414 | Val Loss: 0.5001
+
+Epoch 14/50
+Train Loss: 0.3419 | Val Loss: 0.4780
+
+Epoch 15/50
+Train Loss: 0.3403 | Val Loss: 0.4966
+
+Epoch 16/50
+Train Loss: 0.3369 | Val Loss: 0.4941
+
+Epoch 17/50
+Train Loss: 0.3385 | Val Loss: 0.4743
+
+Epoch 18/50
+Train Loss: 0.3385 | Val Loss: 0.4713
+
+Epoch 19/50
+Train Loss: 0.3372 | Val Loss: 0.4681
+
+Epoch 20/50
+Train Loss: 0.3356 | Val Loss: 0.4674
+
+Epoch 21/50
+Train Loss: 0.3368 | Val Loss: 0.4722
+
+Epoch 22/50
+Train Loss: 0.3326 | Val Loss: 0.4682
+
+Epoch 23/50
+Train Loss: 0.3337 | Val Loss: 0.4661
+
+Epoch 24/50
+Train Loss: 0.3321 | Val Loss: 0.4672
+
+Epoch 25/50
+Train Loss: 0.3319 | Val Loss: 0.4692
+
+Epoch 26/50
+Train Loss: 0.3314 | Val Loss: 0.4637
+
+Epoch 27/50
+Train Loss: 0.3302 | Val Loss: 0.4641
+
+Epoch 28/50
+Train Loss: 0.3295 | Val Loss: 0.4646
+
+Epoch 29/50
+Train Loss: 0.3306 | Val Loss: 0.4648
+
+Epoch 30/50
+Train Loss: 0.3275 | Val Loss: 0.4644
+
+Epoch 31/50
+Train Loss: 0.3286 | Val Loss: 0.4669
+Early stopping triggered.
+Model on: cuda:0
+[RAW] Fold 1 | Val Acc: 0.429 | High/Low Acc: 0.734
+[RAW] Fold 1 | Test Acc: 0.562 | High/Low Acc: 0.781
+
+[Validation Performance]
+
+Accuracy: 0.4292
+High/Low Accuracy: 0.7339
+
+[Test Performance]
+
+Accuracy: 0.5616
+High/Low Accuracy: 0.7808
+
+========== Aggregated Metrics (CrossValidation) ==========
+Average Accuracy     : 0.5616
+====================================================
+
+=== Aggregated Metrics ===
+avg_accuracy: 0.5616438356164384
+confusion_matrix_aggregated: [[3, 3, 2, 1, 0], [5, 21, 3, 0, 0], [1, 5, 16, 0, 0], [0, 3, 7, 1, 0], [0, 1, 1, 0, 0]]
+labels: [0, 1, 2, 3, 4]
+
+

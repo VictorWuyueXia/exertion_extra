@@ -1,0 +1,103 @@
+# Experiment: new_split_cls_alexnet_mfb_2025-08-16
+
+===== training_log.txt =====
+
+=== Experiment: new_split_cls_alexnet_mfb_2025-08-16 ===
+Experiment done
+
+=== Experiment: new_split_cls_alexnet_mfb_2025-08-16 ===
+Experiment done
+
+
+===== terminal_log.txt =====
+Using CUDA device index: 0 - NVIDIA RTX A6000
+Loading metadata from all splits...
+Train set: 764 files
+Val set: 127 files
+Test set: 21 files
+Validating file existence...
+Train - All files exist
+Val - All files exist
+Test - All files exist
+Using pre-defined splits:
+  Train: 764 sessions
+  Val: 127 sessions
+  Test: 21 sessions
+
+=== Running with params: {'input_channels': 1, 'lr': 0.0001}, feature_type: mfb ===
+
+====== Running Experiment ======
+Device: cuda
+
+Epoch 1/50
+Train Loss: 0.5283 | Val Loss: 0.6855
+
+Epoch 2/50
+Train Loss: 0.4482 | Val Loss: 0.6186
+
+Epoch 3/50
+Train Loss: 0.4090 | Val Loss: 0.5399
+
+Epoch 4/50
+Train Loss: 0.3881 | Val Loss: 0.4894
+
+Epoch 5/50
+Train Loss: 0.3731 | Val Loss: 0.4644
+
+Epoch 6/50
+Train Loss: 0.3657 | Val Loss: 0.4663
+
+Epoch 7/50
+Train Loss: 0.3615 | Val Loss: 0.4669
+
+Epoch 8/50
+Train Loss: 0.3583 | Val Loss: 0.4619
+
+Epoch 9/50
+Train Loss: 0.3582 | Val Loss: 0.4666
+
+Epoch 10/50
+Train Loss: 0.3581 | Val Loss: 0.4741
+
+Epoch 11/50
+Train Loss: 0.3566 | Val Loss: 0.4614
+
+Epoch 12/50
+Train Loss: 0.3568 | Val Loss: 0.4683
+
+Epoch 13/50
+Train Loss: 0.3565 | Val Loss: 0.4673
+
+Epoch 14/50
+Train Loss: 0.3534 | Val Loss: 0.4782
+
+Epoch 15/50
+Train Loss: 0.3528 | Val Loss: 0.4627
+
+Epoch 16/50
+Train Loss: 0.3524 | Val Loss: 0.4737
+Early stopping triggered.
+Model on: cuda:0
+[RAW] Fold 1 | Val Acc: 0.331 | High/Low Acc: 0.614
+[RAW] Fold 1 | Test Acc: 0.476 | High/Low Acc: 0.810
+
+[Validation Performance]
+
+Accuracy: 0.3307
+High/Low Accuracy: 0.6142
+
+[Test Performance]
+
+Accuracy: 0.4762
+High/Low Accuracy: 0.8095
+
+========== Aggregated Metrics (CrossValidation) ==========
+Average Accuracy     : 0.4762
+====================================================
+
+=== Aggregated Metrics ===
+avg_accuracy: 0.47619047619047616
+confusion_matrix_aggregated: [[1, 0, 0, 0], [3, 4, 0, 0], [1, 2, 4, 0], [0, 1, 4, 1]]
+labels: [0, 1, 2, 3]
+
+

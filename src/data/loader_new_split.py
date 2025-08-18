@@ -192,6 +192,21 @@ def collate_multi_feature_batch(batch):
         # Fallback to mfb lengths (primary feature) when using scalar labels
         result["lengths"] = torch.clamp(result["mfb_lengths"], max=min_len) if result["mfb_lengths"] is not None else torch.tensor([min_len] * batch_size, dtype=torch.long)
 
+    # Build concatenated feature when multiple inputs are present (time-aligned by data prep to same T)
+    concat_list = []
+    if result["embed"] is not None:
+        concat_list.append(result["embed"])  # (B, T, 768 [*layers])
+    if result["mfcc"] is not None:
+        concat_list.append(result["mfcc"])   # (B, T, 40)
+    if result["mfb"] is not None:
+        concat_list.append(result["mfb"])    # (B, T, 40)
+
+    if len(concat_list) >= 2:
+        result["concat"] = torch.cat(concat_list, dim=-1)  # (B, T, F_concat)
+        result["concat_lengths"] = result["lengths"]
+    else:
+        result["concat"], result["concat_lengths"] = None, None
+
     # Add metadata
     result.update({
         "session_ids": meta[0],

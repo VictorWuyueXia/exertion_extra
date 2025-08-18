@@ -5,8 +5,15 @@
 === Experiment: new_split_cls_vgg16_mfcc_2025-08-16 ===
 Experiment done
 
+=== Experiment: new_split_cls_vgg16_mfcc_2025-08-16 ===
+Experiment done
+
+=== Experiment: new_split_cls_vgg16_mfcc_2025-08-16 ===
+Experiment done
+
 
 ===== terminal_log.txt =====
+Using CUDA device index: 0 - NVIDIA RTX A6000
 Loading metadata from all splits...
 Train set: 2511 files
 Val set: 233 files

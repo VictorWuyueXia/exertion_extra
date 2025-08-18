@@ -1,0 +1,186 @@
+# Experiment: new_split_cls_vgg16_embed_4_2025-08-16
+
+===== training_log.txt =====
+
+=== Experiment: new_split_cls_vgg16_embed_4_2025-08-16 ===
+
+=== Experiment: new_split_cls_vgg16_embed_4_2025-08-16 ===
+
+=== Experiment: new_split_cls_vgg16_embed_4_2025-08-16 ===
+Experiment done
+
+=== Experiment: new_split_cls_vgg16_embed_4_2025-08-16 ===
+
+=== Experiment: new_split_cls_vgg16_embed_4_2025-08-16 ===
+
+=== Experiment: new_split_cls_vgg16_embed_4_2025-08-16 ===
+Experiment done
+
+
+===== terminal_log.txt =====
+Using CUDA device index: 0 - NVIDIA RTX A6000
+Loading metadata from all splits...
+Train set: 2511 files
+Val set: 233 files
+Test set: 73 files
+Validating file existence...
+Train - All files exist
+Val - All files exist
+Test - All files exist
+Using pre-defined splits:
+  Train: 2511 sessions
+  Val: 233 sessions
+  Test: 73 sessions
+
+=== Running with params: {'input_channels': 1, 'lr': 0.0001}, feature_type: embed ===
+
+====== Running Experiment ======
+Device: cuda
+Using DataParallel with 4 GPUs
+
+Epoch 1/50
+/home/yl948/temp_Vic/cardio_pause/lib/python3.10/site-packages/torch/nn/modules/linear.py:125: UserWarning: Attempting to run cuBLAS, but there was no current CUDA context! Attempting to set the primary context... (Triggered internally at /pytorch/aten/src/ATen/cuda/CublasHandlePool.cpp:181.)
+  return F.linear(input, self.weight, self.bias)
+Train Loss: 0.5521 | Val Loss: 0.5042
+
+Epoch 2/50
+Train Loss: 0.4950 | Val Loss: 0.5061
+
+Epoch 3/50
+Train Loss: 0.4949 | Val Loss: 0.4999
+
+Epoch 4/50
+Train Loss: 0.4937 | Val Loss: 0.4993
+
+Epoch 5/50
+Train Loss: 0.4931 | Val Loss: 0.5005
+
+Epoch 6/50
+Train Loss: 0.4976 | Val Loss: 0.5038
+
+Epoch 7/50
+Train Loss: 0.4964 | Val Loss: 0.5018
+
+Epoch 8/50
+Train Loss: 0.4950 | Val Loss: 0.5145
+
+Epoch 9/50
+Train Loss: 0.4955 | Val Loss: 0.5054
+
+Epoch 10/50
+Train Loss: 0.4945 | Val Loss: 0.4972
+
+Epoch 11/50
+Train Loss: 0.4900 | Val Loss: 0.4969
+
+Epoch 12/50
+Train Loss: 0.4907 | Val Loss: 0.4983
+
+Epoch 13/50
+Train Loss: 0.4890 | Val Loss: 0.4973
+
+Epoch 14/50
+Train Loss: 0.4882 | Val Loss: 0.4959
+
+Epoch 15/50
+Train Loss: 0.4876 | Val Loss: 0.4967
+
+Epoch 16/50
+Train Loss: 0.4871 | Val Loss: 0.5014
+
+Epoch 17/50
+Train Loss: 0.4881 | Val Loss: 0.4925
+
+Epoch 18/50
+Train Loss: 0.4857 | Val Loss: 0.4908
+
+Epoch 19/50
+Train Loss: 0.4860 | Val Loss: 0.4910
+
+Epoch 20/50
+Train Loss: 0.4799 | Val Loss: 0.4935
+
+Epoch 21/50
+Train Loss: 0.4773 | Val Loss: 0.4876
+
+Epoch 22/50
+Train Loss: 0.4786 | Val Loss: 0.4860
+
+Epoch 23/50
+Train Loss: 0.4792 | Val Loss: 0.4840
+
+Epoch 24/50
+Train Loss: 0.4710 | Val Loss: 0.4858
+
+Epoch 25/50
+Train Loss: 0.4707 | Val Loss: 0.5069
+
+Epoch 26/50
+Train Loss: 0.4724 | Val Loss: 0.4870
+
+Epoch 27/50
+Train Loss: 0.4659 | Val Loss: 0.4768
+
+Epoch 28/50
+Train Loss: 0.4606 | Val Loss: 0.4810
+
+Epoch 29/50
+Train Loss: 0.4637 | Val Loss: 0.4757
+
+Epoch 30/50
+Train Loss: 0.4581 | Val Loss: 0.4691
+
+Epoch 31/50
+Train Loss: 0.4540 | Val Loss: 0.4675
+
+Epoch 32/50
+Train Loss: 0.4501 | Val Loss: 0.4650
+
+Epoch 33/50
+Train Loss: 0.4500 | Val Loss: 0.4674
+
+Epoch 34/50
+Train Loss: 0.4507 | Val Loss: 0.4712
+
+Epoch 35/50
+Train Loss: 0.4501 | Val Loss: 0.4646
+
+Epoch 36/50
+Train Loss: 0.4415 | Val Loss: 0.4750
+
+Epoch 37/50
+Train Loss: 0.4422 | Val Loss: 0.4675
+
+Epoch 38/50
+Train Loss: 0.4388 | Val Loss: 0.4653
+
+Epoch 39/50
+Train Loss: 0.4320 | Val Loss: 0.4778
+
+Epoch 40/50
+Train Loss: 0.4251 | Val Loss: 0.4701
+Early stopping triggered.
+Model on: cuda:0
+[RAW] Fold 1 | Val Acc: 0.348 | High/Low Acc: 0.657
+[RAW] Fold 1 | Test Acc: 0.479 | High/Low Acc: 0.671
+
+[Validation Performance]
+
+Accuracy: 0.3476
+High/Low Accuracy: 0.6567
+
+[Test Performance]
+
+Accuracy: 0.4795
+High/Low Accuracy: 0.6712
+
+========== Aggregated Metrics (CrossValidation) ==========
+Average Accuracy     : 0.4795
+====================================================
+
+=== Aggregated Metrics ===
+avg_accuracy: 0.4794520547945205
+confusion_matrix_aggregated: [[4, 4, 1, 0, 0], [5, 20, 4, 0, 0], [0, 14, 7, 1, 0], [1, 4, 2, 4, 0], [0, 0, 1, 1, 0]]
+labels: [0, 1, 2, 3, 4]
+
+

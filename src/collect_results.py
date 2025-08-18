@@ -49,7 +49,7 @@ def collect_logs_and_confmat(config_path: str) -> Tuple[str, str]:
     model = cfg["experiment"]["model"]
     input_features = cfg["experiment"]["input_features"]
     feature_str = "_".join(input_features)
-    task_str = "13"
+    task_str = str(cfg["experiment"]["task"])
 
     # Project root = parent of src
     project_root = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
@@ -99,12 +99,14 @@ def collect_logs_and_confmat(config_path: str) -> Tuple[str, str]:
     y_true = parse_list_column(df.loc[0, "y_true"]) if isinstance(df.loc[0, "y_true"], str) else list(df.loc[0, "y_true"])
     y_pred = parse_list_column(df.loc[0, "y_pred"]) if isinstance(df.loc[0, "y_pred"], str) else list(df.loc[0, "y_pred"])
 
-    labels_present = sorted(set(y_true) | set(y_pred))
-    cm = confusion_matrix(y_true, y_pred, labels=labels_present)
-
+    # labels_present = sorted(set(y_true) | set(y_pred))
+    # cm = confusion_matrix(y_true, y_pred, labels=labels_present)
+    labels_full = list(range(5))  # 或从 config 读取
+    cm = confusion_matrix(y_true, y_pred, labels=labels_full)
+    
     # Save confusion matrix image
     cm_path = os.path.join(results_dir, "confusion_matrix.png")
-    save_confusion_matrix(cm, labels=[str(l) for l in labels_present], output_path=cm_path, title=f"Confusion Matrix - {model} {feature_str}")
+    save_confusion_matrix(cm, labels=[str(l) for l in labels_full], output_path=cm_path, title=f"Confusion Matrix - {model} {feature_str}")
 
     print(f"Logs saved to: {merged_log_path}")
     print(f"Confusion matrix saved to: {cm_path}")
