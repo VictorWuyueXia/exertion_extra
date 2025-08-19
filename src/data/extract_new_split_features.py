@@ -117,7 +117,7 @@ def extract_mfcc(audio, sr=16000, target_frames=750):
 
 
 def extract_wav2vec2(audio, sr=16000, target_frames=750, selected_layers=(4, 6, 7, 8, 12)):
-    """Extract Wav2Vec2 embeddings - target shape (749, 768) for each layer"""
+    """Extract Wav2Vec2 embeddings - target shape (750, 768) for each layer"""
     initialize_wav2vec2_model()
     
     # Convert to tensor if needed

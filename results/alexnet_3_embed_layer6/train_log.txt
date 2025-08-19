@@ -1,0 +1,94 @@
+# Experiment: new_split_cls_alexnet_embed_4_2025-08-18
+
+===== training_log.txt =====
+
+=== Experiment: new_split_cls_alexnet_embed_4_2025-08-18 ===
+
+
+===== terminal_log.txt =====
+Using CUDA device index: 0 - NVIDIA RTX A6000
+Loading metadata from all splits...
+Train set: 764 files
+Val set: 127 files
+Test set: 21 files
+Validating file existence...
+Train - All files exist
+Val - All files exist
+Test - All files exist
+Using pre-defined splits:
+  Train: 764 sessions
+  Val: 127 sessions
+  Test: 21 sessions
+
+=== Running with params: {'input_channels': 1, 'lr': 0.0001}, feature_spec: embed ===
+[INFO] Using feature key 'embed' with shape: (64, 750, 768)
+
+====== Running Experiment ======
+Device: cuda
+Using DataParallel with 3 GPUs
+
+Epoch 1/50
+/home/yl948/temp_Vic/cardio_pause/lib/python3.10/site-packages/torch/nn/modules/linear.py:125: UserWarning: Attempting to run cuBLAS, but there was no current CUDA context! Attempting to set the primary context... (Triggered internally at /pytorch/aten/src/ATen/cuda/CublasHandlePool.cpp:181.)
+  return F.linear(input, self.weight, self.bias)
+Train Loss: 0.5443 | Val Loss: 0.6851
+
+Epoch 2/50
+Train Loss: 0.4823 | Val Loss: 0.6434
+
+Epoch 3/50
+Train Loss: 0.4636 | Val Loss: 0.5601
+
+Epoch 4/50
+Train Loss: 0.4508 | Val Loss: 0.5481
+
+Epoch 5/50
+Train Loss: 0.4393 | Val Loss: 0.5059
+
+Epoch 6/50
+Train Loss: 0.4246 | Val Loss: 0.4641
+
+Epoch 7/50
+Train Loss: 0.4133 | Val Loss: 0.4553
+
+Epoch 8/50
+Train Loss: 0.3992 | Val Loss: 0.4518
+
+Epoch 9/50
+Train Loss: 0.3920 | Val Loss: 0.7131
+
+Epoch 10/50
+Train Loss: 0.3869 | Val Loss: 0.4964
+
+Epoch 11/50
+Train Loss: 0.3761 | Val Loss: 0.6254
+
+Epoch 12/50
+Train Loss: 0.3719 | Val Loss: 0.7563
+
+Epoch 13/50
+Train Loss: 0.3714 | Val Loss: 0.4493
+
+Epoch 14/50
+Train Loss: 0.3656 | Val Loss: 0.4677
+
+Epoch 15/50
+Train Loss: 0.3637 | Val Loss: 0.4411
+
+Epoch 16/50
+Train Loss: 0.3625 | Val Loss: 0.6885
+
+Epoch 17/50
+Train Loss: 0.3635 | Val Loss: 0.8306
+
+Epoch 18/50
+Train Loss: 0.3604 | Val Loss: 0.5144
+
+Epoch 19/50
+Train Loss: 0.3624 | Val Loss: 0.5076
+
+Epoch 20/50
+Train Loss: 0.3597 | Val Loss: 0.4384
+
+Epoch 21/50
+
+

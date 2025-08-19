@@ -82,19 +82,35 @@ class SessionSequenceDataset(Dataset):
             mfb = None
         
         if self.use_embed:
-            if len(self.selected_wav2vec2_layers) > 1:
+            # Sanitize layer ids to avoid malformed entries (e.g., stray brackets)
+            def _sanitize_layer_id(x):
+                s = ''.join([c for c in str(x) if c.isdigit()])
+                return int(s) if s else None
+
+            sel_layers = [lid for lid in (_sanitize_layer_id(x) for x in self.selected_wav2vec2_layers) if lid is not None]
+
+            wav2vec_dir = os.path.join(session_feature_dir, "wav2vec2")
+            if not os.path.isdir(wav2vec_dir):
+                raise FileNotFoundError(f"Wav2Vec2 directory does not exist: {wav2vec_dir}")
+
+            if len(sel_layers) > 1:
                 embed_list = []
-                for layer_id in self.selected_wav2vec2_layers:
-                    layer_path = os.path.join(session_feature_dir, f"wav2vec2/wav2vec2_layer{layer_id}.npy")
+                for layer_id in sel_layers:
+                    layer_path = os.path.join(wav2vec_dir, f"wav2vec2_layer{layer_id}.npy")
                     if not os.path.exists(layer_path):
                         raise FileNotFoundError(f"Wav2Vec2 layer file does not exist: {layer_path}")
                     embed_list.append(np.load(layer_path))  # each shape: (T, D)
-                embeds = np.concatenate(embed_list, axis=1)  # shape: (T, D1 + D2)
+                embeds = np.concatenate(embed_list, axis=1)  # shape: (T, sum(D))
             else:
-                layer_id = self.selected_wav2vec2_layers[0]
-                layer_path = os.path.join(session_feature_dir, f"wav2vec2/wav2vec2_layer{layer_id}.npy")
+                # Fallback: if no valid layer parsed, try default 12, otherwise raise
+                layer_id = sel_layers[0] if sel_layers else 12
+                layer_path = os.path.join(wav2vec_dir, f"wav2vec2_layer{layer_id}.npy")
                 if not os.path.exists(layer_path):
-                    raise FileNotFoundError(f"Wav2Vec2 layer file does not exist: {layer_path}")
+                    # Try to pick any available layer file
+                    candidates = [f for f in os.listdir(wav2vec_dir) if f.startswith("wav2vec2_layer") and f.endswith(".npy")]
+                    if not candidates:
+                        raise FileNotFoundError(f"No Wav2Vec2 layer files found in: {wav2vec_dir}")
+                    layer_path = os.path.join(wav2vec_dir, sorted(candidates)[0])
                 embeds = np.load(layer_path)
         else:
             embeds = None

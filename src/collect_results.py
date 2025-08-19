@@ -51,11 +51,27 @@ def collect_logs_and_confmat(config_path: str) -> Tuple[str, str]:
     feature_str = "_".join(input_features)
     task_str = str(cfg["experiment"]["task"])
 
-    # Project root = parent of src
+    # 判断是否包含embed特征，如果有则加上layer信息
+    layer_str = ""
+    if any("embed" in feat for feat in input_features):
+        # 兼容不同配置格式
+        selected_layers = cfg["experiment"].get("selected_wav2vec2_layers", None)
+        if selected_layers is None:
+            # 有些配置可能在别的地方
+            selected_layers = cfg.get("selected_wav2vec2_layers", None)
+        if selected_layers is not None:
+            if isinstance(selected_layers, (list, tuple)):
+                layer_str = "_layer" + "-".join(str(l) for l in selected_layers)
+            else:
+                layer_str = f"_layer{selected_layers}"
+        else:
+            layer_str = "_layer?"
+
+    # 项目根目录
     project_root = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
 
-    # Results output directory
-    results_dir = os.path.join(project_root, "results", f"{model}_{task_str}_{feature_str}")
+    # 结果输出目录，包含layer信息（如有）
+    results_dir = os.path.join(project_root, "results", f"{model}_{task_str}_{feature_str}{layer_str}")
     ensure_dir(results_dir)
 
     # Experiments directory under Data (base_dir)
@@ -106,7 +122,7 @@ def collect_logs_and_confmat(config_path: str) -> Tuple[str, str]:
     
     # Save confusion matrix image
     cm_path = os.path.join(results_dir, "confusion_matrix.png")
-    save_confusion_matrix(cm, labels=[str(l) for l in labels_full], output_path=cm_path, title=f"Confusion Matrix - {model} {feature_str}")
+    save_confusion_matrix(cm, labels=[str(l) for l in labels_full], output_path=cm_path, title=f"Confusion Matrix - {model} {feature_str}{layer_str}")
 
     print(f"Logs saved to: {merged_log_path}")
     print(f"Confusion matrix saved to: {cm_path}")

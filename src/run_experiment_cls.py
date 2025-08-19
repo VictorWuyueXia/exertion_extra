@@ -12,6 +12,7 @@ import matplotlib.pyplot as plt
 from sklearn.metrics import roc_auc_score, accuracy_score, confusion_matrix
 from models import get_model
 from losses import PenaltyCrossEntropyLoss
+from metrics import group_preds_by_session, compute_per_file_accuracy, save_per_file_accuracy, save_fold_metrics, compute_per_original_session_accuracy, save_confusion_matrix
 
 
 class CoralHead(nn.Module):
@@ -40,7 +41,6 @@ def make_coral_targets(y: torch.Tensor, num_classes: int) -> torch.Tensor:
     K = num_classes
     thresholds = torch.arange(K - 1, device=y.device).unsqueeze(0)  # (1, K-1)
     return (y.unsqueeze(1) > thresholds).float()
-from metrics import group_preds_by_session, compute_per_file_accuracy, save_per_file_accuracy, save_fold_metrics, compute_per_original_session_accuracy, save_confusion_matrix
 
 def train_one_epoch(model, dataloader, criterion, optimizer, device, model_type, feature_type, use_coral=False, coral_head: Optional[CoralHead] = None, num_classes: int = 5):
     model.train()
@@ -488,71 +488,3 @@ def run_experiment(train_loader, val_loader, test_loader, input_dim, epochs=10, 
         "test_per_file_acc": test_per_file_acc
     }
 
-
-# def evaluate(model, dataloader, criterion, device, model_type, feature_type="acoustic"):
-#     model.eval()
-    
-#     total_loss = 0
-#     all_preds = []
-#     all_labels = []
-#     all_sessions = []
-    
-#     with torch.no_grad():
-#         for batch in dataloader:
-#             x = batch[feature_type].to(device)
-#             y = batch["labels"].to(device)
-#             lengths = batch["lengths"]
-
-#             if model_type == "mlp":
-#                 x_flat = []
-#                 y_flat = []
-#                 for i in range(x.size(0)):
-#                     valid_len = min(x[i].size(0), y[i].size(0), lengths[i])
-#                     x_flat.append(x[i, :valid_len])
-#                     y_flat.append(y[i, :valid_len])
-                    
-#                 x_flat = torch.cat(x_flat, dim=0)
-#                 y_flat = torch.cat(y_flat, dim=0).long()
-
-#                 # Ensure equal length
-#                 assert x_flat.shape[0] == y_flat.shape[0], f"Mismatch: x={x_flat.shape}, y={y_flat.shape}"
-
-#                 logits = model(x_flat)
-#                 loss = criterion(logits, y_flat)
-
-#                 mask = y_flat != -100
-#                 logits_masked = logits[mask]
-#                 y_masked = y_flat[mask]
-
-#             elif model_type == "lstm":
-#                 logits = model(x, lengths)
-#                 B, T, C = logits.shape
-#                 logits_flat = logits.view(-1, C)
-#                 y_flat = y.view(-1).long()
-#                 loss = criterion(logits_flat, y_flat)
-
-#                 mask = y_flat != -100
-#                 logits_masked = logits_flat[mask]
-#                 y_masked = y_flat[mask]
-
-
-#             else:
-#                 raise ValueError("Unsupported model type")
-
-#             preds = torch.argmax(logits_masked, dim=1)
-            
-#             # Split predictions and labels per session
-#             start = 0
-#             for i, seq_len in enumerate(lengths):
-#                 valid_len = (y[i, :seq_len] != -100).sum().item()
-#                 end = start + valid_len
-
-#                 all_preds.append(preds[start:end])
-#                 all_labels.append(y_masked[start:end])
-#                 all_sessions.append(batch["session_ids"][i])
-
-#                 start = end
-                
-#             total_loss += loss.item()
-
-#     return total_loss / len(dataloader), all_preds, all_labels, all_sessions

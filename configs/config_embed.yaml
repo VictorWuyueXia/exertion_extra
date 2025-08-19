@@ -1,7 +1,7 @@
 experiment:
-  model: vgg16       # mlp, lstm, tcnnlstm, alexnet, grunet, vgg16, fused_vgg16gru
+  model: grunet       # mlp, lstm, tcnnlstm, alexnet, grunet, vgg16, fused_vgg16gru
   param_index: 0
-  input_features: ["embed"] # "mfcc", "mfb", "embed", "mfcc+embed", "mfb+embed"
+  input_features: ["mfb+embed"] # "mfcc", "mfb", "embed", "mfcc+embed", "mfb+embed"
   selected_wav2vec2_layers: [4] # 4, 6, 7, 8, 12
   task: 3
 
@@ -26,16 +26,6 @@ vgg16_param_grid:
 - { input_channels: 1, lr: 0.0005 }
 
 
-mlp_param_grid:
-  - { hidden_dim: 128,  num_layers: 2, lr: 0.0001 }
-
-
-lstm_param_grid:
-  - { hidden_dim: 128, attention_dim: 128, num_layers: 2, use_attention: false, lr: 0.0001 }
-  - { hidden_dim: 128, attention_dim: 128, num_layers: 2, use_attention: false, lr: 0.0001 }
-  - { hidden_dim: 128, attention_dim: 128, num_layers: 2, use_attention: false, lr: 0.0001 }
-  - { hidden_dim: 128, attention_dim: 128, num_layers: 2, use_attention: false, lr: 0.0001 }
-
 grunet_param_grid:
   - { hidden_dim: 128, attention_dim: 128, num_layers: 2, use_attention: false, lr: 0.0001 }
   - { hidden_dim: 256, attention_dim: 128, num_layers: 2, use_attention: false, lr: 0.0001 }
@@ -45,14 +35,14 @@ grunet_param_grid:
 tcnnlstm_param_grid:
   - {
     hidden_dim: 128,
-    num_layers: 2,
+    n_layers: 2,
     bidirectional: true,
     kernel_size_conv: 3,
     padding_conv: 1,
     stride_conv: 1,
     dilation_conv: 1,
     bias_conv: true,
-    groups_conv: 1,
+    groups_conv: 4,
     lr: 0.0001
     }
   - {

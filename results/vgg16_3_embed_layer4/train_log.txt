@@ -1,0 +1,89 @@
+# Experiment: new_split_cls_vgg16_embed_4_2025-08-18
+
+===== training_log.txt =====
+
+=== Experiment: new_split_cls_vgg16_embed_4_2025-08-18 ===
+Experiment done
+
+
+===== terminal_log.txt =====
+Using CUDA device index: 0 - NVIDIA RTX A6000
+Loading metadata from all splits...
+Train set: 764 files
+Val set: 127 files
+Test set: 21 files
+Validating file existence...
+Train - All files exist
+Val - All files exist
+Test - All files exist
+Using pre-defined splits:
+  Train: 764 sessions
+  Val: 127 sessions
+  Test: 21 sessions
+
+=== Running with params: {'input_channels': 1, 'lr': 0.0001}, feature_spec: embed ===
+[INFO] Using feature key 'embed' with shape: (64, 750, 768)
+
+====== Running Experiment ======
+Device: cuda
+Using DataParallel with 3 GPUs
+
+Epoch 1/50
+/home/yl948/temp_Vic/cardio_pause/lib/python3.10/site-packages/torch/nn/modules/linear.py:125: UserWarning: Attempting to run cuBLAS, but there was no current CUDA context! Attempting to set the primary context... (Triggered internally at /pytorch/aten/src/ATen/cuda/CublasHandlePool.cpp:181.)
+  return F.linear(input, self.weight, self.bias)
+Train Loss: 0.6156 | Val Loss: 0.5855
+
+Epoch 2/50
+Train Loss: 0.5001 | Val Loss: 0.4901
+
+Epoch 3/50
+Train Loss: 0.4785 | Val Loss: 0.4853
+
+Epoch 4/50
+Train Loss: 0.4744 | Val Loss: 0.4824
+
+Epoch 5/50
+Train Loss: 0.4740 | Val Loss: 0.4828
+
+Epoch 6/50
+Train Loss: 0.4734 | Val Loss: 0.4795
+
+Epoch 7/50
+Train Loss: 0.4724 | Val Loss: 0.4840
+
+Epoch 8/50
+Train Loss: 0.4750 | Val Loss: 0.4970
+
+Epoch 9/50
+Train Loss: 0.4788 | Val Loss: 0.4983
+
+Epoch 10/50
+Train Loss: 0.4737 | Val Loss: 0.4891
+
+Epoch 11/50
+Train Loss: 0.4728 | Val Loss: 0.4813
+Early stopping triggered.
+Model on: cuda:0
+[RAW] Fold 1 | Val Acc: 0.244 | High/Low Acc: 0.339
+[RAW] Fold 1 | Test Acc: 0.333 | High/Low Acc: 0.381
+
+[Validation Performance]
+
+Accuracy: 0.2441
+High/Low Accuracy: 0.3386
+
+[Test Performance]
+
+Accuracy: 0.3333
+High/Low Accuracy: 0.3810
+
+========== Aggregated Metrics (CrossValidation) ==========
+Average Accuracy     : 0.3333
+====================================================
+
+=== Aggregated Metrics ===
+avg_accuracy: 0.3333333333333333
+confusion_matrix_aggregated: [[0, 1, 0, 0, 0], [0, 7, 0, 0, 0], [0, 7, 0, 0, 0], [0, 6, 0, 0, 0], [0, 0, 0, 0, 0]]
+labels: [0, 1, 2, 3, 4]
+
+

@@ -1,0 +1,143 @@
+# Experiment: new_split_cls_alexnet_mfb+embed_2025-08-18
+
+===== training_log.txt =====
+
+=== Experiment: new_split_cls_alexnet_mfb+embed_2025-08-18 ===
+Experiment done
+
+=== Experiment: new_split_cls_alexnet_mfb+embed_2025-08-18 ===
+Experiment done
+
+
+===== terminal_log.txt =====
+Using CUDA device index: 0 - NVIDIA RTX A6000
+Loading metadata from all splits...
+Train set: 764 files
+Val set: 127 files
+Test set: 21 files
+Validating file existence...
+Train - All files exist
+Val - All files exist
+Test - All files exist
+Using pre-defined splits:
+  Train: 764 sessions
+  Val: 127 sessions
+  Test: 21 sessions
+
+=== Running with params: {'input_channels': 1, 'lr': 0.0001}, feature_spec: mfb+embed ===
+[INFO] Using feature key 'concat' with shape: (64, 750, 808)
+
+====== Running Experiment ======
+Device: cuda
+Using DataParallel with 3 GPUs
+
+Epoch 1/50
+/home/yl948/temp_Vic/cardio_pause/lib/python3.10/site-packages/torch/nn/modules/linear.py:125: UserWarning: Attempting to run cuBLAS, but there was no current CUDA context! Attempting to set the primary context... (Triggered internally at /pytorch/aten/src/ATen/cuda/CublasHandlePool.cpp:181.)
+  return F.linear(input, self.weight, self.bias)
+Train Loss: 0.5415 | Val Loss: 0.6870
+
+Epoch 2/50
+Train Loss: 0.4806 | Val Loss: 0.6373
+
+Epoch 3/50
+Train Loss: 0.4652 | Val Loss: 0.5649
+
+Epoch 4/50
+Train Loss: 0.4535 | Val Loss: 0.5543
+
+Epoch 5/50
+Train Loss: 0.4391 | Val Loss: 0.5446
+
+Epoch 6/50
+Train Loss: 0.4214 | Val Loss: 0.5450
+
+Epoch 7/50
+Train Loss: 0.4056 | Val Loss: 0.5353
+
+Epoch 8/50
+Train Loss: 0.3876 | Val Loss: 0.4800
+
+Epoch 9/50
+Train Loss: 0.3802 | Val Loss: 0.5720
+
+Epoch 10/50
+Train Loss: 0.3769 | Val Loss: 0.5081
+
+Epoch 11/50
+Train Loss: 0.3702 | Val Loss: 0.4856
+
+Epoch 12/50
+Train Loss: 0.3686 | Val Loss: 0.4633
+
+Epoch 13/50
+Train Loss: 0.3697 | Val Loss: 0.6644
+
+Epoch 14/50
+Train Loss: 0.3651 | Val Loss: 0.4584
+
+Epoch 15/50
+Train Loss: 0.3636 | Val Loss: 0.4460
+
+Epoch 16/50
+Train Loss: 0.3627 | Val Loss: 0.4414
+
+Epoch 17/50
+Train Loss: 0.3637 | Val Loss: 0.4406
+
+Epoch 18/50
+Train Loss: 0.3599 | Val Loss: 0.4391
+
+Epoch 19/50
+Train Loss: 0.3618 | Val Loss: 0.5079
+
+Epoch 20/50
+Train Loss: 0.3602 | Val Loss: 0.5784
+
+Epoch 21/50
+Train Loss: 0.3570 | Val Loss: 0.4486
+
+Epoch 22/50
+Train Loss: 0.3578 | Val Loss: 0.4889
+
+Epoch 23/50
+Train Loss: 0.3579 | Val Loss: 0.4386
+
+Epoch 24/50
+Train Loss: 0.3573 | Val Loss: 0.5634
+
+Epoch 25/50
+Train Loss: 0.3551 | Val Loss: 0.4595
+
+Epoch 26/50
+Train Loss: 0.3552 | Val Loss: 0.4675
+
+Epoch 27/50
+Train Loss: 0.3546 | Val Loss: 0.4497
+
+Epoch 28/50
+Train Loss: 0.3527 | Val Loss: 0.4545
+Early stopping triggered.
+Model on: cuda:0
+[RAW] Fold 1 | Val Acc: 0.457 | High/Low Acc: 0.583
+[RAW] Fold 1 | Test Acc: 0.143 | High/Low Acc: 0.524
+
+[Validation Performance]
+
+Accuracy: 0.4567
+High/Low Accuracy: 0.5827
+
+[Test Performance]
+
+Accuracy: 0.1429
+High/Low Accuracy: 0.5238
+
+========== Aggregated Metrics (CrossValidation) ==========
+Average Accuracy     : 0.1429
+====================================================
+
+=== Aggregated Metrics ===
+avg_accuracy: 0.14285714285714285
+confusion_matrix_aggregated: [[1, 0, 0, 0, 0], [5, 2, 0, 0, 0], [2, 5, 0, 0, 0], [0, 3, 3, 0, 0], [0, 0, 0, 0, 0]]
+labels: [0, 1, 2, 3, 4]
+
+

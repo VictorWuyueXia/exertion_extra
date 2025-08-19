@@ -1,17 +1,8 @@
-# Experiment: new_split_cls_vgg16_mfcc_2025-08-16
+# Experiment: new_split_cls_vgg16_mfcc_2025-08-18
 
 ===== training_log.txt =====
 
-=== Experiment: new_split_cls_vgg16_mfcc_2025-08-16 ===
-Experiment done
-
-=== Experiment: new_split_cls_vgg16_mfcc_2025-08-16 ===
-Experiment done
-
-=== Experiment: new_split_cls_vgg16_mfcc_2025-08-16 ===
-Experiment done
-
-=== Experiment: new_split_cls_vgg16_mfcc_2025-08-16 ===
+=== Experiment: new_split_cls_vgg16_mfcc_2025-08-18 ===
 Experiment done
 
 
@@ -30,110 +21,111 @@ Using pre-defined splits:
   Val: 127 sessions
   Test: 21 sessions
 
-=== Running with params: {'input_channels': 1, 'lr': 0.0001}, feature_type: mfcc ===
+=== Running with params: {'input_channels': 1, 'lr': 0.0001}, feature_spec: mfcc ===
+[INFO] Using feature key 'mfcc' with shape: (64, 750, 40)
 
 ====== Running Experiment ======
 Device: cuda
 
 Epoch 1/50
-Train Loss: 0.5611 | Val Loss: 0.5514
+Train Loss: 0.5619 | Val Loss: 0.5555
 
 Epoch 2/50
-Train Loss: 0.4937 | Val Loss: 0.4895
+Train Loss: 0.5016 | Val Loss: 0.4814
 
 Epoch 3/50
-Train Loss: 0.4792 | Val Loss: 0.4896
+Train Loss: 0.4851 | Val Loss: 0.4798
 
 Epoch 4/50
-Train Loss: 0.4723 | Val Loss: 0.4822
+Train Loss: 0.4747 | Val Loss: 0.4787
 
 Epoch 5/50
-Train Loss: 0.4695 | Val Loss: 0.4909
+Train Loss: 0.4741 | Val Loss: 0.4781
 
 Epoch 6/50
-Train Loss: 0.4677 | Val Loss: 0.4716
+Train Loss: 0.4676 | Val Loss: 0.4774
 
 Epoch 7/50
-Train Loss: 0.4628 | Val Loss: 0.4892
+Train Loss: 0.4651 | Val Loss: 0.4883
 
 Epoch 8/50
-Train Loss: 0.4606 | Val Loss: 0.4663
+Train Loss: 0.4620 | Val Loss: 0.4679
 
 Epoch 9/50
-Train Loss: 0.4574 | Val Loss: 0.4639
+Train Loss: 0.4576 | Val Loss: 0.4650
 
 Epoch 10/50
-Train Loss: 0.4544 | Val Loss: 0.4723
+Train Loss: 0.4562 | Val Loss: 0.4756
 
 Epoch 11/50
-Train Loss: 0.4533 | Val Loss: 0.4782
+Train Loss: 0.4543 | Val Loss: 0.4809
 
 Epoch 12/50
-Train Loss: 0.4517 | Val Loss: 0.4803
+Train Loss: 0.4514 | Val Loss: 0.4757
 
 Epoch 13/50
-Train Loss: 0.4490 | Val Loss: 0.4491
+Train Loss: 0.4483 | Val Loss: 0.4529
 
 Epoch 14/50
-Train Loss: 0.4459 | Val Loss: 0.4438
+Train Loss: 0.4469 | Val Loss: 0.4488
 
 Epoch 15/50
-Train Loss: 0.4432 | Val Loss: 0.4408
+Train Loss: 0.4434 | Val Loss: 0.4437
 
 Epoch 16/50
-Train Loss: 0.4490 | Val Loss: 0.4817
+Train Loss: 0.4458 | Val Loss: 0.4766
 
 Epoch 17/50
-Train Loss: 0.4540 | Val Loss: 0.4429
+Train Loss: 0.4478 | Val Loss: 0.4442
 
 Epoch 18/50
-Train Loss: 0.4420 | Val Loss: 0.4355
+Train Loss: 0.4448 | Val Loss: 0.4454
 
 Epoch 19/50
-Train Loss: 0.4333 | Val Loss: 0.4509
+Train Loss: 0.4339 | Val Loss: 0.4423
 
 Epoch 20/50
-Train Loss: 0.4327 | Val Loss: 0.4423
+Train Loss: 0.4299 | Val Loss: 0.4418
 
 Epoch 21/50
-Train Loss: 0.4333 | Val Loss: 0.4348
+Train Loss: 0.4295 | Val Loss: 0.4348
 
 Epoch 22/50
-Train Loss: 0.4250 | Val Loss: 0.4356
+Train Loss: 0.4211 | Val Loss: 0.4381
 
 Epoch 23/50
-Train Loss: 0.4218 | Val Loss: 0.4405
+Train Loss: 0.4175 | Val Loss: 0.4427
 
 Epoch 24/50
-Train Loss: 0.4190 | Val Loss: 0.4454
+Train Loss: 0.4197 | Val Loss: 0.4433
 
 Epoch 25/50
-Train Loss: 0.4152 | Val Loss: 0.4421
+Train Loss: 0.4213 | Val Loss: 0.4410
 
 Epoch 26/50
-Train Loss: 0.4104 | Val Loss: 0.4435
+Train Loss: 0.4125 | Val Loss: 0.4518
 Early stopping triggered.
 Model on: cuda:0
-[RAW] Fold 1 | Val Acc: 0.307 | High/Low Acc: 0.811
-[RAW] Fold 1 | Test Acc: 0.476 | High/Low Acc: 0.762
+[RAW] Fold 1 | Val Acc: 0.307 | High/Low Acc: 0.795
+[RAW] Fold 1 | Test Acc: 0.524 | High/Low Acc: 0.857
 
 [Validation Performance]
 
 Accuracy: 0.3071
-High/Low Accuracy: 0.8110
+High/Low Accuracy: 0.7953
 
 [Test Performance]
 
-Accuracy: 0.4762
-High/Low Accuracy: 0.7619
+Accuracy: 0.5238
+High/Low Accuracy: 0.8571
 
 ========== Aggregated Metrics (CrossValidation) ==========
-Average Accuracy     : 0.4762
+Average Accuracy     : 0.5238
 ====================================================
 
 === Aggregated Metrics ===
-avg_accuracy: 0.47619047619047616
-confusion_matrix_aggregated: [[1, 0, 0, 0, 0], [2, 5, 0, 0, 0], [0, 4, 3, 0, 0], [0, 1, 4, 1, 0], [0, 0, 0, 0, 0]]
+avg_accuracy: 0.5238095238095238
+confusion_matrix_aggregated: [[1, 0, 0, 0, 0], [3, 4, 0, 0, 0], [0, 3, 3, 1, 0], [0, 0, 3, 3, 0], [0, 0, 0, 0, 0]]
 labels: [0, 1, 2, 3, 4]
 
 

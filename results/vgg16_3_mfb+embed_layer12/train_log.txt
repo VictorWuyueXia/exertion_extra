@@ -1,0 +1,95 @@
+# Experiment: new_split_cls_vgg16_mfb+embed_2025-08-18
+
+===== training_log.txt =====
+
+=== Experiment: new_split_cls_vgg16_mfb+embed_2025-08-18 ===
+Experiment done
+
+=== Experiment: new_split_cls_vgg16_mfb+embed_2025-08-18 ===
+Experiment done
+
+=== Experiment: new_split_cls_vgg16_mfb+embed_2025-08-18 ===
+Experiment done
+
+
+===== terminal_log.txt =====
+Using CUDA device index: 0 - NVIDIA RTX A6000
+Loading metadata from all splits...
+Train set: 764 files
+Val set: 127 files
+Test set: 21 files
+Validating file existence...
+Train - All files exist
+Val - All files exist
+Test - All files exist
+Using pre-defined splits:
+  Train: 764 sessions
+  Val: 127 sessions
+  Test: 21 sessions
+
+=== Running with params: {'input_channels': 1, 'lr': 0.0001}, feature_spec: mfb+embed ===
+[INFO] Using feature key 'concat' with shape: (64, 750, 808)
+
+====== Running Experiment ======
+Device: cuda
+Using DataParallel with 3 GPUs
+
+Epoch 1/50
+/home/yl948/temp_Vic/cardio_pause/lib/python3.10/site-packages/torch/nn/modules/linear.py:125: UserWarning: Attempting to run cuBLAS, but there was no current CUDA context! Attempting to set the primary context... (Triggered internally at /pytorch/aten/src/ATen/cuda/CublasHandlePool.cpp:181.)
+  return F.linear(input, self.weight, self.bias)
+Train Loss: 0.6101 | Val Loss: 0.5196
+
+Epoch 2/50
+Train Loss: 0.4865 | Val Loss: 0.4828
+
+Epoch 3/50
+Train Loss: 0.4819 | Val Loss: 0.4785
+
+Epoch 4/50
+Train Loss: 0.4736 | Val Loss: 0.4783
+
+Epoch 5/50
+Train Loss: 0.4743 | Val Loss: 0.4783
+
+Epoch 6/50
+Train Loss: 0.4715 | Val Loss: 0.4776
+
+Epoch 7/50
+Train Loss: 0.4699 | Val Loss: 0.4851
+
+Epoch 8/50
+Train Loss: 0.4723 | Val Loss: 0.4982
+
+Epoch 9/50
+Train Loss: 0.4752 | Val Loss: 0.4942
+
+Epoch 10/50
+Train Loss: 0.4694 | Val Loss: 0.4830
+
+Epoch 11/50
+Train Loss: 0.4695 | Val Loss: 0.4777
+Early stopping triggered.
+Model on: cuda:0
+[RAW] Fold 1 | Val Acc: 0.291 | High/Low Acc: 0.441
+[RAW] Fold 1 | Test Acc: 0.429 | High/Low Acc: 0.667
+
+[Validation Performance]
+
+Accuracy: 0.2913
+High/Low Accuracy: 0.4409
+
+[Test Performance]
+
+Accuracy: 0.4286
+High/Low Accuracy: 0.6667
+
+========== Aggregated Metrics (CrossValidation) ==========
+Average Accuracy     : 0.4286
+====================================================
+
+=== Aggregated Metrics ===
+avg_accuracy: 0.42857142857142855
+confusion_matrix_aggregated: [[0, 1, 0, 0, 0], [0, 5, 2, 0, 0], [0, 3, 4, 0, 0], [0, 2, 4, 0, 0], [0, 0, 0, 0, 0]]
+labels: [0, 1, 2, 3, 4]
+
+
